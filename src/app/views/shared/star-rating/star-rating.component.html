@@ -1,0 +1,8 @@
+<button class="star_rating_btn" [class]="showIcon(i)"  *ngFor="let ratingId of ratingArr;index as i"  (click)="onClick(i+1)">
+  <span class="material-icons">
+    {{showIcon(i)}}
+    </span>  
+</button>
+<!-- <mat-error *ngIf="starCount == null || starCount == 0">
+  Star count is <strong>required</strong> and cannot be zero
+</mat-error> -->

@@ -1,0 +1,11 @@
+{
+    "/bz/*": {
+        "target": "'https://behtarzindagi.in/",
+        "secure": false,
+        "pathRewrite": {
+            "^/bz/*": ""
+        },
+        "changeOrigin": true,
+        "logLevel": "debug"
+    }
+}

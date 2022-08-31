@@ -1,0 +1,43 @@
+.slick-slider {
+  width: 100%;
+  margin: auto;
+  background: #fff;
+}
+
+.nav-btn {
+  height: 47px;
+  position: absolute;
+  width: 26px;
+  cursor: pointer;
+  top: 100px !important;
+}
+
+.offer-price {
+  font-size: 18px !important;
+  color: #f36523 !important;
+  padding-left: 10px;
+}
+
+.pcs {
+  padding: 5px;
+}
+
+.see-more {
+  font-size: 13px;
+  vertical-align: middle;
+  padding: 0 20px;
+  font-weight: 600;
+}
+
+.see-more:hover {
+  text-decoration: underline;
+}
+
+.image-box {
+  height: auto;
+  overflow: hidden;
+}
+
+.andro_product.andro_product-minimal .andro_product-title {
+  padding-top: 5px;
+}

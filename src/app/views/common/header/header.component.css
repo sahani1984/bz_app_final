@@ -1,0 +1,264 @@
+.fa-map-marker{
+    font-size: 20px;
+    vertical-align: middle;
+}
+.navbar-brand{display:flex; align-items:center;}
+.navbar-brand img{max-height:60px;}
+.navbar-brand .clientLogo{width:40px;}
+.loginBtn {
+    margin: .2em;
+    padding: 8px 15px;
+    border: none;
+    white-space: nowrap;
+    border-radius: 5px;
+    font-size: 13px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.fa-facebook-f, .fa-google{
+    padding-right: 10px;
+}
+
+.loginBtn--google {
+    background: #dd4b39;
+}
+.loginBtn--facebook {
+    background-color: #4c69ba;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#4c69ba),to(#3b55a0));
+    background-image: linear-gradient(#4c69ba,#3b55a0);
+    text-shadow: 0 -1px 0 #354c8c;
+}
+
+.andro_header-top .whatsapp{display:flex;}
+.andro_header-top .whatsapp img{max-width:50px;}
+
+
+
+.category-wrapper {
+    position: relative;
+    -webkit-mask-image: url('../../../../assets/img/circle_190x190.svg');
+    mask-image: url('../../../../assets/img/circle_190x190.svg');
+    height: 190px;
+    /* max-width: 190px; */
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    /* background-color: #beedff; */
+}
+
+
+.category-box{
+    font-size: 14px;
+    position: relative;
+    color: #222;
+    top: 54px;
+    font-weight: 700;
+    line-height: 20px;
+    width: 124px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.category-wrapper:nth-child(1){
+    background-color: #ffddbe;
+}
+
+.category-wrapper:nth-child(2){
+    background-color: #beedff;
+}
+.category-wrapper:nth-child(3){
+    background-color: #fed0fb;
+}
+.category-wrapper:nth-child(4){
+    background-color: #fdfea7;
+}
+.category-wrapper:nth-child(5){
+    background-color: #dbf9aa;
+}
+.category-wrapper:nth-child(6){
+    background-color: #ffddbe;
+}
+.category-wrapper:nth-child(7){
+    background-color: #beedff;
+}
+
+.category-wrapper:nth-child(8){
+    background-color: #ffddbe;
+}
+
+.category-wrapper:nth-child(9){
+    background-color: #beedff;
+}
+.category-wrapper:nth-child(10){
+    background-color: #fed0fb;
+}
+.category-wrapper:nth-child(11){
+    background-color: #fdfea7;
+}
+.category-wrapper:nth-child(12){
+    background-color: #dbf9aa;
+}
+.category-wrapper:nth-child(13){
+    background-color: #ffddbe;
+}
+.category-wrapper:nth-child(14){
+    background-color: #beedff;
+}
+
+.category-wrapper:nth-child(15){
+    background-color: #ffddbe;
+}
+
+.category-wrapper:nth-child(16){
+    background-color: #beedff;
+}
+.category-wrapper:nth-child(17){
+    background-color: #fed0fb;
+}
+.category-wrapper:nth-child(18){
+    background-color: #fdfea7;
+}
+.category-wrapper:nth-child(19){
+    background-color: #dbf9aa;
+}
+.category-wrapper:nth-child(20){
+    background-color: #ffddbe;
+}
+.category-wrapper:nth-child(21){
+    background-color: #beedff;
+}
+
+.category-wrapper:nth-child(22){
+    background-color: #ffddbe;
+}
+
+.category-wrapper:nth-child(23){
+    background-color: #beedff;
+}
+.category-wrapper:nth-child(24){
+    background-color: #fed0fb;
+}
+.category-wrapper:nth-child(25){
+    background-color: #fdfea7;
+}
+.category-wrapper:nth-child(26){
+    background-color: #dbf9aa;
+}
+.category-wrapper:nth-child(27){
+    background-color: #ffddbe;
+}
+.category-wrapper:nth-child(28){
+    background-color: #beedff;
+}
+
+
+
+/* .category-wrapper.Agro:hover, .category-wrapper.Cattle:hover, .category-wrapper.Fertilizers:hover, .category-wrapper.Machinery:hover, .category-wrapper.Seeds:hover, .category-wrapper.Tractor:hover, .category-wrapper.Others:hover{
+    background: #89c74a;
+    color: #fff;
+} */
+
+
+
+.category-box:hover p{
+    color: #fff;
+}
+.category-box:hover img{
+    color: #fff;
+}
+
+.slick-slider {
+    width: 100%;
+    margin: auto;
+    background: #fff;
+  }
+  
+  .nav-btn {
+    height: 47px;
+    position: absolute;
+    width: 26px; 
+    cursor: pointer;
+    top: 100px !important;
+  }
+
+
+  .btn.btn-success.seller {
+    padding: 5px 10px;
+    background: #f36523;
+    border: none; border-radius:2px;
+}
+
+.active{
+    color: #f36523;
+}
+
+
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .highlight {
+    font-weight: bold;
+  }
+
+
+
+  .input-group {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+.account_menu{width:100%; display:flex; flex-direction:column; position: relative;  height:100%;}
+.account_menu .top_account_menu{width:100%; height:auto; background-color: #efefef;
+    padding: 10px 15px;border-bottom: 5px solid #ddd;}
+.account_menu .close_btn{position: absolute;right: 0;width: 25px;height:25px;background: #555;top: 0;display: flex;align-items: center;justify-content: center; color:#fff !important; font-size:1.1rem; z-index:99;}
+.account_menu .accountMenuInMob{width:100%; display:flex;  flex-direction:column; height: 100%; overflow-y: auto;}
+.account_menu  .top_account_menu a{color:#555;}
+.account_menu .accountMenuInMob .userName span{width: 100%; font-weight:500; display: block;clear: both; color: #088141; font-size: 12px;}
+.account_menu .accountMenuInMob .userName a{font-weight: 500; color: #ed7d23;}
+.account_menu .category_menu{padding: 0 15px;}
+.accountMenuInMob .login_links > a{width:auto; height: auto; border-radius:4px; font-weight:500; padding:8px 15px 8px 0; min-width:65px; display: flex;align-items: center;}
+.input-group-append{margin-top:-1px;}
+.search_box{width: 80%; margin: 2px auto}
+
+.account_menu .notifications{
+    position: relative;
+}
+
+.account_menu .notifications .not_count {
+  position:relative;
+  font-size: .5rem;
+  background: green;
+  color: #fff;
+  border-radius: 10px;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  line-height: 10px;
+  text-align: center;
+  transform: translateY(-6px);
+}
+
+.account_menu .notifications ul{max-height:300px; overflow-y:auto; border-top:1px solid green;}
+
+@media (max-width: 991px) {
+    .andro_header-controls .andro_header-controls-inner{display:none;}
+    .search_box{width:100%;    margin: 2px auto 10px;
+        padding-left: 30px;
+        padding-right: 30px;}
+
+}

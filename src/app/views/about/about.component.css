@@ -1,0 +1,27 @@
+.subtitle{
+    font-size: 14px;
+    line-height: 26px;
+    text-align: center;
+}
+ul li{
+    list-style-type: disc;
+}
+.team-box {
+    border: 1px solid #efefef;
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #ccc;
+}
+.team-box img{
+    margin: 0 auto;
+    display: block;
+}
+.team-box p{
+    font-size: 12px !important;
+}
+
+.andro_testimonial-body {
+    min-height: 175px;
+}

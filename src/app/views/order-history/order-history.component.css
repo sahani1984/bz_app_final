@@ -1,0 +1,63 @@
+.order_history{width:100%;}
+.order_history .hitory_row{display:flex; padding:15px; box-shadow:0px 0px 5px #ccc; margin-bottom:15px; border-radius:4px;}
+.order_history .product_pic{max-width:175px; margin-right:15px;}
+.order_history .product_pic img{border:1px solid #ccc; padding: 5px;background: #fff;border-radius: 2px;}
+.order_history .item_des{max-width:375px;}
+.order_history .item_des ul{width:100%; display:block; float: left; margin:0;}
+.order_history .item_des ul li{width:100%; display:flex; margin:0 0 3px; word-break:break-all;}
+.order_history .item_des ul li span:first-child{display:block; white-space: nowrap; min-width:120px; position: relative; float: left; font-weight:600;}
+.order_history .item_des ul li  span:first-child:after{content:":"; position: absolute; right:10px;}
+.order_history .item_des ul li span:last-child{max-width:100%;}
+.noorderCreated{border: 1px solid #ccc; height: 100px;width: 100%; display: flex;align-items: center;
+    justify-content: center; font-size: 1.5rem; border-radius: 4px;}
+
+    .order_steps{width:100%; max-width:100%; display:flex; height:30px; position: relative; justify-content:flex-end; margin-bottom:50px;}
+    .order_steps .steps{width:22%;   position:relative;height:100%; display:flex; align-items:center; }
+
+    .order_steps .steps:after{ content:""; width:100%; height:3px; background-color:rgba(0,0,0,.1); position: absolute; left:1px; top:calc(50% - 1px); z-index:0;}  
+    .order_steps .steps:before{content: "";width:16px; height: 16px;background-color: #fff;position: absolute;
+        left:0px;top:8px; z-index: 1;border-radius: 10px; }  
+    .order_steps .steps .fa{position: absolute;z-index: 1; color: rgba(0,0,0,.1);left: 0;font-size:1.25rem; top: 6px;}    
+    .order_steps .steps label{font-size: .7rem; position: absolute;left: 0;top: 35px; width: 80px; transform: translateX(-30px); text-align: center;margin: 0; line-height: 1; font-weight:500; color:#777;}  
+   
+    .order_steps .steps.success  .fa{color:rgba(29,201,118,.8);}
+    .order_steps .steps.success:after{ background-color:rgba(29,201,118,.8);}
+ 
+    .order_steps .steps.warning.fa{color:rgba(255,184,34,.8);font-size: 1.05rem;}
+    .order_steps .steps.warning:after{ background-color:rgba(255,184,34,.5);}
+ 
+    .order_steps .steps.st5{width:10px;}
+    .order_steps .steps.success.st5:after{width:0;}
+    .trackOrderBtn, .write_review{width:100%; display:flex;  flex-direction: column; margin:10px 0;}
+    .write_review .reviewBtn .material-icons{font-size:18px;}
+    .write_review .product_view_img{width:100%; clear: both; height:auto;}
+    .product_view_img mat-label{width:100%; font-weight:500; margin:0 0 5px; color:#555;}
+    .write_review .imgbox{position: relative;width:100%;height:245px; overflow: hidden; display: flex; border:2px solid #999}
+    .write_review .kt-avatar__holder{height:100%;width:100%; position: absolute;}
+    .write_review input[type="file"]{position: absolute; z-index: 9; width: 100%;height: 100%; opacity: 0;}
+    .write_review .rateTis{font-weight:500; width:100%; margin:0 0 5px;}
+    .write_review .upload_pic_msg{font-size: 1rem; font-weight: 500;}
+    .cancel_return_order{width:100%; clear:both; display:flex; margin-top:30px; flex-direction:column;}
+    .cancel_return_order .example-radio-group {display: flex; flex-direction: column;margin: 15px 0;}      
+    .cancel_return_order .example-radio-button {margin: 5px; }
+    .cancel_return_order .other_reason{width:50%; margin:15px 0;} 
+    .write_feedback{width:100%; clear:both; margin:15px 0 30px;}
+        
+
+    @media screen and (max-width:1024px){
+        .order_history .hitory_row{flex-wrap:wrap;}
+        .hitory_row .order_status{min-width:100%; margin-top:50px;}
+        .order_steps,.trackOrderBtn{justify-content:flex-start;}      
+    }
+
+    @media screen and (max-width:640px){
+        .order_history .hitory_row{flex-direction:column;}
+        .order_history .product_pic{max-width:100%; margin-right:0; margin-bottom:15px;}      
+        .order_history .item_des ul li{margin-bottom:10px;}
+        .order_history .hitory_row .col.item_des{padding-left:0; padding-right:0;}
+        .cancel_return_order .other_reason{width:100%}
+        
+    }
+    @media screen and (max-width:375px){
+    .order_steps .steps label{width:50px;}
+    }

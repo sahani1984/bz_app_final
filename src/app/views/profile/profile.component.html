@@ -1,0 +1,150 @@
+<div class="section py-5 andro_fresh-arrivals category-section">
+    <div class="container">
+        <div class="profile-wrapper">
+            <form [formGroup]="profile_form"  class="kt-form kt-form--fit">
+                <div class="kt-portlet__body px-3">
+                    <mat-card>
+                        <div class="img_avatar">
+                            <img src="assets/img/farmer.png" alt="profile info" />
+                        </div>
+                        <h5 class="mb-4">{{pageTitle? pageTitle:'Profile Info'}}</h5>
+                    </mat-card>
+                  
+                  <div class="mt-5">
+                 <div class="row">
+                      <div class="col-md-6 forms_fields">                       
+                        <mat-form-field class="w-100" appearance="outline">
+                          <mat-label>First Name <span>*</span></mat-label>
+                          <input type="name" formControlName="firstName" matInput>
+                        </mat-form-field>
+                        <div *ngIf="isValidate('firstName')" class="text-danger errMsg">
+                          <small *ngIf="f('firstName','required')">Please enter your name</small>
+                          <small *ngIf="f('firstName','pattern')">Enter a valid name.</small>
+                        </div>
+                      </div>
+                      <div class="col-md-6 forms_fields">   
+                        <mat-form-field class="w-100" appearance="outline">
+                          <mat-label>Last Name <span>*</span></mat-label>
+                          <input type="name" formControlName="lastName" matInput>
+                        </mat-form-field>
+                        <div *ngIf="isValidate('lastName')" class="text-danger errMsg">
+                          <small *ngIf="f('lastName','required')">Please enter your name</small>
+                          <small *ngIf="f('lastName','pattern')">Enter a valid name.</small>
+                        </div>
+                      </div>
+                    </div>
+          
+                    <div class="row">
+                      <div class="col-md-6 forms_fields">
+                        <mat-form-field class="w-100" appearance="outline">
+                          <mat-label>Email ID</mat-label>
+                          <input type="name" formControlName="email" matInput>
+                        </mat-form-field>
+                        <div *ngIf="isValidate('email')" class="text-danger errMsg">                         
+                          <small *ngIf="f('email','email')">Enter a valid email.</small>
+                        </div>
+                      </div>
+                      <div class="col-md-6 forms_fields">
+                        <mat-form-field class="w-100" appearance="outline">
+                          <mat-label>Mobile Number <span>*</span></mat-label>
+                          <input type="number" (keypress)="keyPressEvent($event)" formControlName="mobile" maxlength="10" matInput>                         
+                        </mat-form-field>
+                        <div *ngIf="isValidate('mobile')" class="text-danger errMsg">
+                          <small *ngIf="f('mobile','required')">Please enter your mobile</small>
+                          <small *ngIf="f('mobile','pattern')">Enter a valid mobile number.</small>
+                        </div>
+                      </div>
+                    </div>
+          
+          
+          
+                    <div class="row">
+                        <div class="col-md-6 forms_fields">
+                            <mat-form-field class="w-100" appearance="outline">
+                              <mat-label>State <span>*</span></mat-label>
+                              <mat-select formControlName="state" #state (selectionChange)="getDistrictList(state.value)">
+                                <mat-option *ngFor="let state of stateList" [value]="state.Id">{{state.Name}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                            <div *ngIf="isValidate('state')" class="text-danger errMsg">
+                              <small *ngIf="f('state','required')">Please select your state.</small>                             
+                            </div>
+                          </div>
+                      <div class="col-md-6 forms_fields">
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>District <span>*</span></mat-label>
+                            <mat-select formControlName="district" #district (selectionChange)="getBlockList(district.value)">
+                              <mat-option *ngFor="let distric of districtList" [value]="distric.Id">{{distric.Name}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <div *ngIf="isValidate('district')" class="text-danger errMsg">
+                            <small *ngIf="f('district','required')">Please select your district.</small>                             
+                          </div>
+                       
+                      </div>
+                    </div>
+          
+                    <div class="row">
+                      <div class="col-md-6 forms_fields">
+                        <mat-form-field class="w-100" appearance="outline">
+                          <mat-label>Block/Sub District </mat-label>
+                          <mat-select formControlName="subDistrict" #block (selectionChange)="getVillageList(block.value)">
+                            <mat-option *ngFor="let block of blockList" [value]="block.Id">{{block.Name}}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="isValidate('subDistrict')" class="text-danger errMsg">
+                          <small *ngIf="f('subDistrict','required')">Please select your block.</small>                             
+                        </div>
+                      </div>
+                      <div class="col-md-6 forms_fields">  
+                        <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Town/Village </mat-label>
+                            <mat-select formControlName="village">
+                              <mat-option *ngFor="let item of villageList" [value]="item.Id">{{item.Name}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                          <div *ngIf="isValidate('village')" class="text-danger errMsg">
+                            <small *ngIf="f('village','required')">Please select your village.</small>                             
+                          </div>                   
+                      </div>
+                    </div>
+          
+                    <div class="row">
+                        <div class="col-md-6 forms_fields">  
+                            <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>Neighbour Village </mat-label>
+                                <mat-select formControlName="neighbour_village">
+                                  <mat-option *ngFor="let item of villageList" [value]="item.Name">{{item.Name}}</mat-option>
+                                </mat-select>
+                              </mat-form-field> 
+                              <div *ngIf="isValidate('neighbour_village')" class="text-danger errMsg">
+                                <small *ngIf="f('neighbour_village','required')">Please select your nearest other village.</small>                             
+                              </div>                     
+                        </div>
+                        <div class="col-md-6 forms_fields">
+                          <mat-form-field class="w-100" appearance="outline">
+                            <mat-label>Full Address </mat-label>
+                            <input type="text" formControlName="address" matInput />
+                            
+                          </mat-form-field>
+                          <div *ngIf="isValidate('address')" class="text-danger errMsg">
+                            <small *ngIf="f('address','required')">Please enter your full address</small>                             
+                          </div>    
+                        </div> 
+                      
+                    </div>
+
+                   
+          
+                    <div [class.b]="checkIfValid(profile_form.valid)" class="w-100 d-flex justify-content-end">
+                      <button type="button" (click)="saveProfile(profile_form.value)" color="primary"
+                        class="btn btn-success mr-2"
+                        [disabled]="profile_form.invalid">{{pageTitle?'Update':'Save Profile'}} </button>
+                      <button type="reset" mat-raised-button>Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+        </div>        
+    </div>
+</div>

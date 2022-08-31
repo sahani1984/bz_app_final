@@ -1,0 +1,9 @@
+.breadcrumb{
+    background-color: transparent;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+}
+.products-wrapper .andro_product-footer {
+    padding: 0 10px !important;
+}

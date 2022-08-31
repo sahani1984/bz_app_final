@@ -1,0 +1,38 @@
+<div class="section py-5 andro_fresh-arrivals category-section">
+  <div class="container">
+    <div class="profile-wrapper">
+      <div class="section-title-wrap mr-lg-30">
+        <h4 class="title">Best Deal Notifications</h4>
+        <div class="notification">
+          <ng-container *ngIf="!isLoaded">
+            <div class="loading">
+              <img src="./assets/img/loading.gif" alt="loading">
+            </div>
+          </ng-container>
+          <ng-container *ngIf="isLoaded">
+          <div class="row"  *ngIf="notificationList.length">
+            <div class=" col-md-6"  *ngFor="let item of notificationList">          
+              <div class="item_des">
+                <h4>Best Deal Notification</h4>
+                 <ul>
+                   <li class="productName">{{item.ProductName}}</li>
+                   <li>{{item.UnitName}}</li>
+                   <li>{{item.DealerPrice | currency:'INR'}}</li>
+                   <li><span>Best deal price</span> <span>{{item.SellerFinalAmount}}</span></li>
+                 </ul>                 
+                 <ul class="border-t">
+                   <li><span>Dealer Name</span><span>{{item.DealerName}}</span></li>
+                   <li><span>Dealer Number</span><span>{{item.DealerNumber}}</span></li>                   
+                 </ul> 
+                 <button (click)="goToProdcutDetail(item)" class="btn btn-success mt-2">Book Order</button>             
+             </div></div></div>             
+             <ng-container *ngIf="!notificationList.length">
+              <div class="noorderCreated">Notificaton empty. </div>
+            </ng-container>
+      </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

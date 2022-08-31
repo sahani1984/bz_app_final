@@ -1,0 +1,28 @@
+/* .login_wrapper{
+    width:450px; max-width:100%;
+}
+.modal_header{
+    display:flex;
+    width:100%; 
+    justify-content:space-between;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+    padding:10px 0;
+}
+.modal_header h5{margin:0;}
+.modal_header .close{outline:none;}
+.lble_flx{display:flex; width:100%;}
+.lble_flx .lbl{width:100px;}
+.hint{font-size: 10px;
+    text-align: right;
+    color: #777;
+    width: 100%;
+    display: block;
+    float: right;} */
+    /* .ImgResp {
+        width: 100%;
+        height: 400px;
+        background-image: url('../../../../assets/img/banner/bz_tractor_1920x830 Hindi.jpg');
+        background-size: 100% 100%;
+        border: 1px solid red;
+        } */

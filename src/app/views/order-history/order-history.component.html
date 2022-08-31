@@ -1,0 +1,211 @@
+<div class="section py-5 andro_fresh-arrivals category-section">
+  <div class="container">
+    <div class="profile-wrapper">
+      <div class="section-title-wrap mr-lg-30">
+        <div class="row">
+          <div class="col-md-8">         
+            <h4 class="title">
+              {{viewType=='orderHistoryView'?"Order History":viewType=='cancelOrderView'?"Cancel/Return Order": viewType=='writeFeedbackView'?'Add Review and Rating':null}}
+            </h4>
+          </div>
+          <div *ngIf="viewType != 'orderHistoryView'" class="col-md-4 d-flex justify-content-end">
+            <button (click)="viewType = 'orderHistoryView'" mat-stroked-button color="primary">Back</button>
+          </div>
+        </div>
+
+        <div *ngIf="viewType=='orderHistoryView'" class="order_history">
+          <ng-container *ngIf="!isLoaded">
+            <div class="loading">
+              <img src="./assets/img/loading.gif" alt="loading">
+            </div>
+          </ng-container>
+          <ng-container *ngIf="isLoaded">
+            <ng-container *ngIf="!orderHistory.length">
+              <div class="noorderCreated">Order history empty. </div>
+            </ng-container>
+            <ng-container *ngIf="orderHistory.length">
+              <div class="hitory_row" *ngFor="let item of orderHistory">
+                <div class="product_pic">
+                  <img [src]="item.ImagePath" [alt]="item.ProductName" />
+                </div>
+                <div class="col item_des">
+                  <ul>
+                    <li><span>Product name</span> <span>{{item.ProductName}}</span></li>
+                    <li><span>Order No.</span> <span>{{item.orderid}}</span></li>
+                    <li><span>Price</span> <span>{{item.Price | currency:'INR'}}</span></li>
+                    <li><span>Quantity</span> <span>{{item.Quantity}}</span></li>
+                    <li><span>Unit name</span> <span>{{item.UnitName}}</span></li>
+                    <li><span>Order date</span> <span>{{item.OrderDate | date}}</span></li>
+                  </ul>
+                </div>
+                <div class="col order_status">
+                  <div class="order_steps" *ngIf="item.trackingHistory?.CancelReason[0].Status == 'Cancelled'">
+                    <span class="steps success st1">
+                      <i class="fa fa-check-circle"></i><label>Ordered</label>
+                    </span>
+                    <span class="steps success st2">
+                      <i class="fa fa-check-circle"></i><label>Cancel Requested</label>
+                    </span>
+                    <span class="steps success st5">
+                      <i class="fa fa-check-circle"></i><label>Cancelled</label>
+                    </span>
+                  </div>
+
+                   
+                  <div class="trackOrderBtn">                   
+                    <button (click)="reOrderItem(item)"
+                      *ngIf="(item.trackingHistory?.CancelReason[0].Status == 'Cancelled') || (item.trackingHistory?.CancelReason[0].Status == 'Delivered')"
+                      mat-stroked-button
+                      class="mb-1" color="primary">
+                      <i class="fa fa-undo" aria-hidden="true"></i> &nbsp; RE-ORDER
+                      ITEM</button>
+                  </div>
+
+                   
+
+                  <ng-container *ngIf="item.trackingHistory?.CancelReason[0].Status != 'Cancelled'">
+                    <div class="order_steps" *ngFor="let track of item.trackingHistory?.CancelReason">
+                      <span
+                        [ngClass]="initiateStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'success', '')"
+                        class="steps st1">
+                        <i [ngClass]="initiateStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'fa-check-circle', 'fa-circle')"
+                          class="fa"></i>
+                        <label>Initiated</label></span>
+
+                      <span
+                        [ngClass]="pendingCnfStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'success', '')"
+                        class="steps st2">
+                        <i [ngClass]="pendingCnfStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'fa-check-circle', 'fa-circle')"
+                          class="fa"></i>
+                        <label>Pending for re-confirmation</label></span>
+
+                      <span
+                        [ngClass]="confirmStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'success', '')"
+                        class="steps st3">
+                        <i [ngClass]="confirmStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'fa-check-circle', 'fa-circle')"
+                          class="fa"></i> <label>Confirmed</label></span>
+
+                      <span
+                        [ngClass]="outforDeliveryStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'success', '')"
+                        class="steps st4">
+                        <i [ngClass]="outforDeliveryStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'fa-check-circle', 'fa-circle')"
+                          class="fa"></i> <label>Out for Delivery</label></span>
+
+                      <span
+                        [ngClass]="deliverdStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'success', '')"
+                        class="steps st5">
+                        <i [ngClass]="deliverdStp(track.Status, item.trackingHistory?.ReturnStatus[0].ReturnStatus, 'fa-check-circle', 'fa-circle')"
+                          class="fa"></i> <label>Deliverd</label></span>
+                    </div>
+
+
+                    <div class="trackOrderBtn">
+                      <button *ngIf="(item.trackingHistory?.CancelReason[0].Status == 'Cancelled')" mat-stroked-button
+                        class="mb-1" color="primary"><i class="fa fa-undo" aria-hidden="true"></i> &nbsp; RE-ORDER ITEM</button>
+
+                      <button (click)="cancelOrReturn(1, item?.PackageId, item.trackingHistory)"
+                        *ngIf="item.trackingHistory?.CancelReason[0].Status !== 'Delivered'" mat-stroked-button
+                        color="accent"><i class="fa fa-window-close" aria-hidden="true"></i> &nbsp; CANCEL ITEM</button>
+                      <button (click)="cancelOrReturn(2, item?.PackageId, item.trackingHistory)"
+                        *ngIf="item.trackingHistory?.CancelReason[0].Status == 'Delivered'" mat-stroked-button
+                        color="accent"><i class="fa fa-undo" aria-hidden="true"></i> &nbsp; RETURN ITEM</button>
+                    </div>
+                    <div class="write_review">
+                      <button (click)="goToFeedback(item)" mat-flat-button color="success" class="reviewBtn">
+                        <ng-container *ngFor="let d of [0,1,2,3,4]">
+                          <span class="material-icons"> star_border </span>
+                        </ng-container>
+                        &nbsp; &nbsp; Write a review
+                      </button>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+
+        <div *ngIf="viewType=='cancelOrderView'" class="cancel_return_order">
+          <label id="example-radio-group-label">Select your Reason</label>
+          <mat-radio-group (change)="other_reason=''" aria-label="Select an option" class="example-radio-group success"
+            [(ngModel)]="favoriteReason">
+            <mat-radio-button  *ngFor="let reason of reasonListArr"
+              [value]="reason.id" (click)="favoriteReason = reason.id">
+              {{reason.CancelReason}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div *ngIf="favoriteReason ==85" class="other_reason">
+            <mat-form-field class="w-100">
+              <mat-label>Enter reason</mat-label>
+              <textarea type="text" name="other_reason" [(ngModel)]="other_reason" matInput></textarea>
+            </mat-form-field>
+
+          </div>
+
+          <div class="w-100 d-flex justify-content-start">
+            <button (click)="submitReason()" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+
+        <!--SUBMIT REVIEW/FEEDBACK  -->
+        <div *ngIf="viewType=='writeFeedbackView'" class="write_review">
+          <label class="rateTis">Rate this product</label>
+          <div class="ratingbox">
+            <mat-star-rating [rating]="feedbackObj['rating']" [starCount]="starCount"
+              (ratingUpdated)="onRatingChanged($event)">
+            </mat-star-rating>
+          </div>
+          <div class="write_feedback">
+            <mat-form-field class="w-100">
+              <mat-label>Write your review</mat-label>
+              <textarea name="review" id="reviewTxt" name="reviewTxt" [(ngModel)]="feedbackObj['review']" matInput
+                placeholder="Write your review..."></textarea>
+            </mat-form-field>
+          </div>
+          <label class="upload_pic_msg">Uplaod a picture of your product and let others know about it.</label>
+          <div class="product_view_img">
+            <div class="row">
+              <div class="col-md-3">
+                <mat-label>Top Image</mat-label>
+                <div class="imgbox">
+                  <img [src]=" feedbackObj['FrontSideImageFileSource']['FileAsBase64']"
+                    onerror="this.src='./assets/img/dummyImg.jpg'" class="kt-avatar__holder" />
+                  <input type="file" #profilePic1 (change)="preview(profilePic1.files, 'FrontSideImageFileSource')" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <mat-label>Bottom Image</mat-label>
+                <div class="imgbox">
+                  <img [src]=" feedbackObj['BackSideImageFileSource']['FileAsBase64']"
+                    onerror="this.src='./assets/img/dummyImg.jpg'" class="kt-avatar__holder" />
+                  <input type="file" #profilePic2 (change)="preview(profilePic2.files, 'BackSideImageFileSource')" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <mat-label>Left Image</mat-label>
+                <div class="imgbox">
+                  <img [src]=" feedbackObj['LeftSideImageFileSource']['FileAsBase64']"
+                    onerror="this.src='./assets/img/dummyImg.jpg'" class="kt-avatar__holder" />
+                  <input type="file" #profilePic3 (change)="preview(profilePic3.files, 'LeftSideImageFileSource')" />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <mat-label>Right Image</mat-label>
+                <div class="imgbox">
+                  <img [src]=" feedbackObj['RightSideImageFileSource']['FileAsBase64']"
+                    onerror="this.src='./assets/img/dummyImg.jpg'" class="kt-avatar__holder" />
+                  <input type="file" #profilePic4 (change)="preview(profilePic4.files, 'RightSideImageFileSource')" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <button (click)="submitReview()" class="w-100" mat-flat-button color="success">Submit Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.andro_product-single-thumb img{
+    height: 200px;
+}
+
+.breadcrumb{
+    background-color: transparent;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+}
+.radio_group_row{width:100%; display:block; float:left; clear:both; margin:15px 0 0; color:#555;}
+.mat-radio-button{margin-right:20px;}

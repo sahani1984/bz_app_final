@@ -1,0 +1,35 @@
+<div class="location_wrapper">
+<div class="title_row">
+<h2 mat-dialog-title>Select your location</h2>
+<button mat-dialog-close title="close" type="button" class="close" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="locationForm">
+    <div class="locationForm mt-3">
+      <div class="form-group">
+        <label>State <span class="text-danger">*</span></label>
+        <select class="form-control" formControlName="state"
+          (change)="addState($event.target.value)" required>
+          <option *ngFor="let item of stateList" [value]="item.Id + ' ' + item.Name">{{item.Name}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>District&nbsp;<span class="text-danger">*</span></label>
+        <select class="form-control" formControlName="district"
+          (change)="addDistrict($event.target.value)" required>
+          <option *ngFor="let item of districtList" [value]="item.Id + ' ' + item.Name">
+            {{item.Name}}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="button" (click)="changeLocation()" [disabled]="locationForm.invalid"
+          class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+</div>

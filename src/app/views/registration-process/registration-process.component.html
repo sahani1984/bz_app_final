@@ -1,0 +1,106 @@
+
+
+<div class="container py-5" *ngIf="formValidationData.length > 0" >
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <form [formGroup]="registrationForm">
+        <div class="form-row "  style="padding-top: 35px;">
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.FirstName">
+                <label for="FirstName">First Name<span *ngIf="isFieldRequired.FirstName" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }" formControlName="FirstName" >
+            </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.LastName">
+                <label for="LastName">Last Name<span *ngIf="isFieldRequired.LastName" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }" formControlName="LastName" >
+            </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.UserName">
+                <label for="UserName">User Name<span *ngIf="isFieldRequired.UserName" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }" formControlName="UserName" >
+            </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.Email">
+                <label for="Email">Email<span *ngIf="isFieldRequired.Email" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" formControlName="Email">
+            </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.Mobile">
+                <label for="Mobile">Mobile<span *ngIf="isFieldRequired.Mobile" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Mobile.errors }" formControlName="Mobile">
+              </div>                      
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.CPName">
+                <label for="CPName">CP Name<span *ngIf="isFieldRequired.CPName" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.CPName.errors }" formControlName="CPName" >
+            </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.OwnerName">
+                <label for="OwnerName">Owner Name<span *ngIf="isFieldRequired.OwnerName" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.OwnerName.errors }" formControlName="OwnerName" >
+            </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.ReportingUserId">
+                <label for="ReportingUserId">Reporting User<span *ngIf="isFieldRequired.ReportingUserId" class="required">*</span></label>
+                <select class="form-control" (change)="changeState($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.ReportingUserId.errors }" formControlName="ReportingUserId">
+                    <option [ngValue]=null>Pick a reporting user</option>
+                    <option *ngFor="let data of stateList" [ngValue]="data.Id">{{data.Name}}</option>
+                </select>
+              </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.Aadhar">
+                <label for="Aadhar">Aadhar<span *ngIf="isFieldRequired.Aadhar" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Aadhar.errors }" formControlName="Aadhar" >
+            </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.DL">
+                <label for="DL">DL<span *ngIf="isFieldRequired.DL" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.DL.errors }" formControlName="DL" >
+            </div>
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.HomeAddressLandmark">
+                <label for="HomeAddressLandmark">Home Address Landmark<span *ngIf="isFieldRequired.HomeAddressLandmark" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.HomeAddressLandmark.errors }" formControlName="HomeAddressLandmark" >
+            </div>
+            <div class="col-sm-3 pb-3" *ngIf="isFieldDisplay.HomeStateId">
+                <label for="HomeStateId">State<span class="required" *ngIf="isFieldRequired.HomeStateId">*</span></label>
+                <select class="form-control" (change)="changeState($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.HomeStateId.errors }" formControlName="HomeStateId">
+                    <option [ngValue]=null>Pick a state</option>
+                    <option *ngFor="let data of stateList" [ngValue]="data.Id">{{data.Name}}</option>
+                </select>
+              </div>
+              <div class="col-sm-3 pb-3" *ngIf="isFieldDisplay.HomeDistrictId">
+                <label for="HomeDistrictId">District<span class="required" *ngIf="isFieldRequired.HomeDistrictId">*</span></label>
+                <select  class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.HomeDistrictId.errors }" formControlName="HomeDistrictId">
+                    <option [ngValue]=null>Pick a district</option>
+                    <option *ngFor="let data of districtList" [ngValue]="data.DistrictId">{{data.DistrictName}}</option>
+                </select>
+              </div>  
+            <div class="col-sm-6 pb-3" *ngIf="isFieldDisplay.OfficeAddressLandmark">
+                <label for="OfficeAddressLandmark">Office Address Landmark<span *ngIf="isFieldRequired.OfficeAddressLandmark" class="required">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.OfficeAddressLandmark.errors }" formControlName="OfficeAddressLandmark" >
+            </div>
+            <div class="col-sm-3 pb-3" *ngIf="isFieldDisplay.OfficeStateId">
+                <label for="OfficeStateId">Office State<span class="required" *ngIf="isFieldRequired.OfficeStateId">*</span></label>
+                <select class="form-control" (change)="changeState($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.OfficeStateId.errors }" formControlName="OfficeStateId">
+                    <option [ngValue]=null>Pick a office state</option>
+                    <option *ngFor="let data of stateList" [ngValue]="data.Id">{{data.Name}}</option>
+                </select>
+              </div>
+              <div class="col-sm-3 pb-3" *ngIf="isFieldDisplay.PostalCode">
+                <label for="PostalCode">Postal Code<span class="required" *ngIf="isFieldRequired.PostalCode">*</span></label>
+                <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.PostalCode.errors }" formControlName="PostalCode">
+            </div> 
+            <div class="col-sm-3 pb-3" *ngIf="isFieldDisplay.GSTIN">
+              <label for="GSTIN">GSTIN<span class="required" *ngIf="isFieldRequired.GSTIN">*</span></label>
+              <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.GSTIN.errors }" formControlName="GSTIN">
+          </div>
+          <div class="col-sm-3 pb-3" *ngIf="isFieldDisplay.WorkingStateId">
+            <label for="StateId" title="Select state where you want to sell your product">Working State<span *ngIf="isFieldRequired.WorkingStateId" class="required">*</span></label>
+            <select title="Select state where you want to sell your product" multiple class="form-control" size="2"  [ngClass]="{ 'is-invalid': submitted && f.WorkingStateId.errors }" formControlName="WorkingStateId">            
+              <option *ngFor="let data of stateList" [ngValue]="data.Id">{{data.Name}}</option>
+          </select>
+          </div>
+          <div class="col-sm-3 pb-3" *ngIf="isFieldDisplay.Address">
+            <label for="PostalCode">Address<span *ngIf="isFieldRequired.Address" class="required">*</span></label>
+            <textarea class="form-control" rows="3" [ngClass]="{ 'is-invalid': submitted && f.Address.errors }" formControlName="Address"></textarea>
+        </div>              
+          <div class="col-sm-12 pb-3" style="margin-bottom: 20px;">
+            <button class="btn btn-primary" (click)="onRegSubmit()" style="font-weight:500;">Registration</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,17 @@
+.slide{
+    margin: 0 2px;
+    border-radius: 5px;
+}
+.slide img{
+   min-height: 275px;
+   width: 100%;
+   border-radius: 5px;
+}
+
+.banner-2.andro_banner .slick-slide, .banner-3.andro_banner .slick-slide {
+    display: block;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+

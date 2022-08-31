@@ -1,0 +1,137 @@
+<div class="andro_banner banner-3 bg-contain bg-norepeat banner-section">
+    <div class="section pt-0">
+          <img width="100%" class="img img-responsive mb-1" src="./assets/img/banner/bz_tractor_1920x830 Hindi.jpg">
+    </div>
+</div>
+<div class="container"> 
+              
+                
+                <div class="header">
+                    <h1 class="title"><strong>रोटावेटर जीतो कॉंटेस्ट(Tractor Jeeto Contest)</strong></h1>
+                    <span>
+                        आज ही अपना ट्रेक्टर बुक करवाए और रोटावेटर जीतने का मौका पाए.
+विजेता की घोषणा 1 दिसंबर 2020 को की जाएगी
+विजेता का चयन लकी ड्रा के माध्यम से किया जाएगा
+इस कॉंटेस्ट में भाग लेने के लिए आपको 18 साल से अधिक होना मान्य है
+कृपया अपना नाम,नंबर और पता नीचे सही सही डाले ताके हमारे प्रतिनिधि आपसे संपर्क कर सके (Book a Tractor now and get a chance to win a Rotavator for free
+Winners will be announced on the 1st of December
+Winners will be decided on the basis of Lucky Draw
+To Participate in this contest you should be more than 18 years of age.
+Please fill in your Personal Details like your Name,Location and Phone number correctly so that our representative can reach out to you.
+)
+
+                    </span>
+                    <br/>
+                    <span style="color: red;">
+                        ** नियम और शर्ते लागू(Terms and conditions apply)
+                    </span>
+                </div>
+                <div >
+                    <form [formGroup]="leadForm">
+                        <div class="locationForm mt-3">
+                            <div class="row">                                                             
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>कितने दिन में ट्रेकटर खरीदना चाहते है?(
+                                            How many days do you want to buy a tractor?) <span class="text-danger">*</span></label>
+                                        <select class="form-control" formControlName="purchaseDays" required>
+                                          <option *ngFor="let item of purchaseDaysList" [value]="item.Id + ' ' + item.Name">{{item.Name}}
+                                          </option>
+                                        </select>
+                                      </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>नाम(Name) <span class="text-danger">*</span></label>
+                                        <input maxlength="60" class="form-control custom-input-field" [class.is-invalid]="(leadForm.get('name').invalid) && (leadForm.get('name').touched)" placeholder=""
+                                            formControlName="name" >
+                                          <div class="w-100 text-danger" *ngIf="(leadForm.get('name').invalid) && (leadForm.get('name').touched)">
+                                              <small>Please enter valid name.</small>
+                                          </div>  
+                                    </div>
+                                </div>                               
+                            </div>
+                            <div class="row"> 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>ई-मेल(Email)<span class="text-danger">*</span></label>
+                                        <input maxlength="60" class="form-control custom-input-field" [class.is-invalid]="(leadForm.get('email').invalid) && (leadForm.get('email').touched)" placeholder=""
+                                            formControlName="email"  >
+                                          <div class="w-100 text-danger" *ngIf="(leadForm.get('email').invalid) && (leadForm.get('email').touched)">
+                                              <small>Please enter valid email.</small>
+                                          </div>  
+                                    </div>
+                                </div> 
+                                <div class="col-md-6">  
+                                    <div class="form-group">
+                                        <label class="lble_flx"><span class="lbl">मोबाइल नंबर(Phone number)</span><span class="text-danger">*</span> <span *ngIf="showHint" class="hint">Enter 10 digit mobile number without country code or zero.</span></label>
+                                        <input  class="form-control custom-input-field" [class.is-invalid]="(leadForm.get('mob').invalid) && (leadForm.get('mob').touched)" maxlength="10"
+                                            placeholder="" formControlName="mob"
+                                             (focus)="showHint = true" (blur)="showHint = false">                                           
+                                            <div class="w-100 text-danger" *ngIf="(leadForm.get('mob').invalid) && (leadForm.get('mob').touched)">
+                                                <small>Please enter valid 10 digit number.</small>
+                                            </div> 
+                                    </div>
+                                </div>                                                                                            
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>कौनसा ट्रेक्टर लेना चाहते है?(Which tractor do you want to take?) <span class="text-danger">*</span></label>
+                                        <select class="form-control" formControlName="brandProduct" required>
+                                          <option *ngFor="let item of brandProduct" [value]="item.Id + ' ' + item.Name">{{item.Name}}
+                                          </option>
+                                        </select>
+                                      </div>
+                                </div>   
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>राज्य(State) <span class="text-danger">*</span></label>
+                                        <select class="form-control" formControlName="state" required>
+                                          <option *ngFor="let item of stateList" [value]="item.Id + ' ' + item.Name">{{item.Name}}
+                                          </option>
+                                        </select>
+                                      </div>
+                                </div>                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>ज़िला(District) <span class="text-danger">*</span></label>
+                                        <input maxlength="60" class="form-control custom-input-field" [class.is-invalid]="(leadForm.get('district').invalid) && (leadForm.get('district').touched)" placeholder=""
+                                            formControlName="district" >
+                                          <div class="w-100 text-danger" *ngIf="(leadForm.get('district').invalid) && (leadForm.get('district').touched)">
+                                              <small>Please enter valid district.</small>
+                                          </div>  
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>गाँव(Village) <span class="text-danger">*</span></label>
+                                        <input maxlength="60" class="form-control custom-input-field" [class.is-invalid]="(leadForm.get('village').invalid) && (leadForm.get('village').touched)" placeholder=""
+                                            formControlName="village" >
+                                          <div class="w-100 text-danger" *ngIf="(leadForm.get('village').invalid) && (leadForm.get('village').touched)">
+                                              <small>Please enter valid village.</small>
+                                          </div>  
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">                                        
+                                        <button type="button" (click)="onLoginSubmit()" [disabled]="leadForm.invalid"
+                                            class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="row" *ngIf="isFormSuccess">
+                                <div class="col-md-12">
+                                    <div class="w-100 text-success" >
+                                        <small>Your query has been submitted successfully.</small>
+                                    </div> 
+                                </div>                               
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+</div> 

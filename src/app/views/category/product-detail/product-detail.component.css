@@ -1,0 +1,43 @@
+.breadcrumb{
+    background-color: transparent;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+}
+.andro_product.andro_product-minimal .andro_product-title{
+    height: auto !important;
+    text-align: left;
+}
+.product_detail_wrapper{width:100%; display:block; float:left; clear:both; background-color:#fff;}
+.productWrapper{width:100%; display:block; float: left; clear: both; height:auto; min-height:100px;}
+.section.andro_related-posts{
+    width: 100%;
+    display: block;
+    float: left;
+    clear: both; min-height:100px;
+}
+
+.imageViewer{width:100%; height:auto; display:flex; clear:both;}
+.imageViewer img{max-width:100%; max-height:100%; display:block;}
+.imageViewer .thumbnails{width:80px; max-height:400px; min-height:400px; overflow-y:auto; overflow-x:hidden; padding:0 5px;}
+.imageViewer .thumbnails span{width:100%; display:block; float:left; clear:both; margin-bottom:5px; border:1px solid #ccc; overflow:hidden;}
+.imageViewer .thumbnails span.active{border:2px solid #0ac50a;}
+.thumbnails span img{cursor:pointer;}
+.imageViewer .bigImagewrapper{width:calc(100% - 80px); padding-left:5px; height:400px; max-height:400px;overflow:hidden; display:flex;}
+ .bigImagewrapper img{height:100%; width:100%; border:1px solid #ccc;}
+.product_details{width:100%; display:table; border-color:#ccc; border-width:1px; border-style:solid; color:#555;}
+.bigImagewrapper .imagepreview{width:100%; display:flex; height:100%;}
+.bigImagewrapper .videopreview {width:100%; display:flex; height:100%; background-color:#000; position:relative;}
+.bigImagewrapper .videopreview iframe{width:100%; height:100%;}
+.bigImagewrapper .videopreview .close{width: 30px; height: 30px;position: absolute;right: 0;top: 0; background: #fff;opacity: 1;text-align: center; align-items: center; display: flex;justify-content: center; cursor: pointer;}
+.product_details th,.product_details td{padding:5px 10px;}
+.product_details th{color:#555; width:150px;}
+.andro_product-single-content{width:100%; clear:both; display:block; float:left;}
+
+@media screen and (max-width:640px){
+    .imageViewer{flex-wrap:wrap;}
+    .imageViewer .thumbnails{width:100%; max-height:60px; min-height:60px; overflow-y:hidden; overflow-x:auto; margin-bottom:5px; display:flex;padding:0;}
+    .imageViewer .thumbnails span{width:60px; height:100%; margin-right:5px; min-width:60px;}
+    .imageViewer .bigImagewrapper{width:100%; height:auto; min-height:200px; padding-left: 0; border:1px solid #ccc;}
+}
+

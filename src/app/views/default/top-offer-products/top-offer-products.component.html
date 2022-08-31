@@ -1,0 +1,247 @@
+<div [hidden]="!panIndiaProduct">
+ <div class="section pt-0 andro_fresh-arrivals">
+  <div class="container-fluid">
+     <div class="section-title flex-title">
+       <h4 class="title">Top Selling
+         <span class="see-more">
+           <a href="javascript:void(0)" (click)="goToSeeMore('top-selling')">See more</a>
+         </span>
+       </h4>
+     </div>
+<div class="slider-wrapper">
+<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+  <div ngxSlickItem *ngFor="let item of sellingProducts;let currentIndex = index;" class="slide top-selling">
+    <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+      <div class="andro_product-thumb">
+        <a href="javascript:;" (click)="goToDetailPage(item?.RecordID, 'Top Selling',item?.ProductName)">
+          <img [src]="item?.ImagePath" alt="product"></a>
+      </div>
+      <div class="andro_product-badge andro_badge-sale">
+        {{item?.OfferDiscount}}
+      </div>
+      <div class="andro_product-body">
+        <h6 class="andro_product-title"> <a href="javascript:void(0);"
+            (click)="goToDetailPage(item?.RecordID, 'Top Selling',item?.ProductName)">
+            {{item?.ProductName}} </a>
+        </h6>
+      </div>
+      <div class="andro_product-footer">
+        <div class="andro_product-price">
+          <p>
+            <span class="float-left">
+              <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+              <span class="main-price">&#8377; {{item?.MRP}}</span>
+            </span>
+            <span class="float-right pcs">{{item?.UnitName}}</span>
+          </p>
+        </div>
+        <div class="andro_product-buttons"></div>
+      </div>
+      <div class="andro_product-footer">
+        <div class="andro_product-price">
+          <span class="float-left">
+            <button type="button" (click)="goToDetailPage(item?.RecordID, 'Top Selling',item?.ProductName)"
+              class="btn btn-success btn-sm">BUY NOW</button>
+          </span>
+          <span class="float-right"><button type="button"
+              (click)="goToEnquiry(item?.RecordID,1, item?.CategoryID, item?.DealerId)"
+              class="btn btn-info btn-sm">ENQUIRY</button></span>
+        </div>
+        <div class="andro_product-buttons"></div>
+      </div>
+    </div>
+  </div>
+</ngx-slick-carousel>
+</div>
+</div>
+</div>
+
+  <div class="section pt-0 andro_fresh-arrivals">
+    <div class="container-fluid">
+      <div class="section-title flex-title">
+        <h4 class="title">Behtar Bachat
+          <span class="see-more">
+            <a href="javascript:;" (click)="goToSeeMore('behtar-bachat')">See more</a>
+          </span>
+        </h4>
+      </div>
+      <div class="slider-wrapper">
+        <ngx-slick-carousel  class="carousel"
+          #slickModal2="slick-carousel" [config]="slideConfig">
+          <div ngxSlickItem *ngFor="let item of behtarBachatProducts;let currentIndex = index;" class="behtar-bachat">
+            <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+              <div class="andro_product-thumb">
+                <a href="javascript:void(0);" (click)="goToDetailPage(item?.RecordID, 'Behtar Bachat',item?.ProductName)">
+                  <img src="{{item?.ImagePath}}" alt="product"></a>
+              </div>
+              <div class="andro_product-badge andro_badge-sale">
+                {{item?.OfferDiscount}}
+              </div>
+              <div class="andro_product-body">
+                <h6 class="andro_product-title"> <a href="javascript:;"
+                    (click)="goToDetailPage(item?.RecordID, 'Behtar Bachat',item?.ProductName) ">
+                    {{item?.ProductName}} </a>
+                </h6>
+                <share-buttons [theme]="'circles-dark'" [include]="['facebook','telegram','whatsapp']" [show]="3"
+                  [size]="1"
+                  [url]="'https://behtarzindagi.in/index/#/bz/product-detail/'+item?.RecordID+'?category=Behtar Bachat&name='+item?.ProductName"
+                  [image]="item?.ImagePath" [autoSetMeta]="false"></share-buttons>
+              </div>
+              <div class="andro_product-footer">
+                <div class="andro_product-price">
+                  <p>
+                    <span class="float-left">
+                      <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                      <span class="main-price">&#8377; {{item?.MRP}}</span>
+                    </span>
+                    <span class="float-right pcs">{{item?.UnitName}}</span>
+                  </p>
+                </div>
+                <div class="andro_product-buttons">&nbsp;</div>
+              </div>
+              <div class="andro_product-footer">
+                <div class="andro_product-price">
+                  <span class="float-left">
+                    <button type="button" (click)="goToDetailPage(item?.RecordID, 'Behtar Bachat',item?.ProductName)"
+                      class="btn btn-success btn-sm">BUY NOW</button>
+                  </span>
+                  <span class="float-right"><button type="button"
+                      (click)="goToEnquiry(item?.RecordID,1, item?.CategoryID, item?.DealerId)"
+                      class="btn btn-info btn-sm">ENQUIRY</button></span>
+                </div>
+                <div class="andro_product-buttons"></div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div><!-- Daily Deals End -->
+  </div>
+
+  <div [hidden]="panIndiaProduct">
+    <!-- Get Todays offer -->
+    <div class="section pt-0 andro_fresh-arrivals">
+      <div class="container-fluid">
+        <div class="section-title flex-title">
+          <h4 class="title">आज के ऑफर-सिर्फ आपके लिए
+            <span class="see-more">
+              <a href="javascript:;" (click)="goToSeeMore('haryana-todays-offer')">See more</a>
+            </span>
+          </h4>
+        </div>
+        <div class="slider-wrapper">
+          <ngx-slick-carousel class="carousel"
+            #slickModal2="slick-carousel" [config]="slideConfig">
+            <div ngxSlickItem *ngFor="let item of todaysOffer;let currentIndex = index;" class="behtar-bachat">
+              <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+                <div class="andro_product-thumb">
+                  <a href="javascript:;"
+                    (click)="goToDetailPage(item?.RecordID, 'आज के ऑफर-सिर्फ आपके लिए',item?.ProductHindiName)">
+                    <img  src="{{item?.ImagePath}}"
+                      alt="product"></a>
+                </div>
+                <div class="andro_product-badge andro_badge-sale">
+                  {{item?.OfferDiscount}}
+                </div>
+                <div class="andro_product-body">
+                  <h6 class="andro_product-title"> <a href="javascript:;"
+                      (click)="goToDetailPage(item?.RecordID, 'आज के ऑफर-सिर्फ आपके लिए',item?.ProductHindiName)">
+                      {{item?.ProductHindiName}} </a>
+                  </h6>
+                </div>
+                <div class="andro_product-footer">
+                  <div class="andro_product-price">
+                    <p>
+                      <span class="float-left">
+                        <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                        <span class="main-price">&#8377; {{item?.MRP}}</span>
+                      </span>
+                      <span class="float-right pcs">{{item?.UnitName}}</span>
+                    </p>
+                  </div>
+                  <div class="andro_product-buttons"></div>
+                </div>
+                <div class="andro_product-footer">
+                  <div class="andro_product-price">
+                    <span class="float-left">
+                      <button type="button"
+                        (click)="goToDetailPage(item?.RecordID, 'आज के ऑफर-सिर्फ आपके लिए',item?.ProductHindiName)"
+                        class="btn btn-success btn-sm">BUY NOW</button>
+                    </span>
+                    <span class="float-right"><button type="button"
+                        (click)="goToEnquiry(item?.RecordID,1, item?.CategoryID, item?.DealerId)"
+                        class="btn btn-info btn-sm">ENQUIRY</button></span>
+                  </div>
+                  <div class="andro_product-buttons"></div>
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="section pt-0 andro_fresh-arrivals">
+      <div class="container-fluid">
+        <div class="section-title flex-title">
+          <h4 class="title">सर्वाधिक बिकने वाले उत्पाद
+            <span class="see-more">
+              <a href="javascript:;" (click)="goToSeeMore('most-sellings')">See more</a>
+            </span>
+          </h4>
+        </div>
+        <div class="slider-wrapper">
+          <ngx-slick-carousel class="carousel"
+            #slickModal2="slick-carousel" [config]="slideConfig">
+            <div ngxSlickItem *ngFor="let item of trendProducts;let currentIndex = index;" class="behtar-bachat">
+              <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+                <div class="andro_product-thumb">
+                  <a href="javascript:;"
+                    (click)="goToDetailPage(item?.RecordID, 'सर्वाधिक बिकने वाले उत्पाद',item?.ProductHindiName)">
+                    <img  src="{{item?.ImagePath}}"
+                      alt="product"></a>
+                </div>
+                <div class="andro_product-badge andro_badge-sale">
+                  {{item?.OfferDiscount}}
+                </div>
+                <div class="andro_product-body">
+                  <h6 class="andro_product-title"> <a href="javascript:;"
+                      (click)="goToDetailPage(item?.RecordID, 'सर्वाधिक बिकने वाले उत्पाद',item?.ProductHindiName)">
+                      {{item?.ProductHindiName}} </a>
+
+                  </h6>
+                </div>
+                <div class="andro_product-footer">
+                  <div class="andro_product-price">
+                    <p>
+                      <span class="float-left">
+                        <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                        <span class="main-price">&#8377; {{item?.MRP}}</span>
+                      </span>
+                      <span class="float-right pcs">{{item?.UnitName}}</span>
+                    </p>
+                  </div>
+                  <div class="andro_product-buttons">&nbsp;</div>
+                </div>
+                <div class="andro_product-footer">
+                  <div class="andro_product-price">
+                    <span class="float-left">
+                      <button type="button"
+                        (click)="goToDetailPage(item?.RecordID, 'सर्वाधिक बिकने वाले उत्पाद',item?.ProductHindiName)"
+                        class="btn btn-success btn-sm">BUY NOW</button>
+                    </span>
+                    <span class="float-right"><button type="button"
+                        (click)="goToEnquiry(item?.RecordID,1, item?.CategoryID, item?.DealerId)"
+                        class="btn btn-info btn-sm">ENQUIRY</button></span>
+                  </div>
+                  <div class="andro_product-buttons"></div>
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </div>

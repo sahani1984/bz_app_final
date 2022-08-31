@@ -1,0 +1,17 @@
+<div class="andro_banner banner-3 bg-contain bg-norepeat banner-section">
+  <ngx-slick-carousel (beforeChange)="afterChange($event)" class="carousel main_banner" #slickModal="slick-carousel"
+    [config]="slideConfig">
+    <div ngxSlickItem *ngFor="let item of bannersList;let currentIndex = index;" class="slide">
+      <div>
+        <a href="javascript:void(0)" (click)="navigateToProduct(item.Url_Redirection)">
+          <img [src]="item?.ImagePath" alt="" width="100%" onerror="this.src='./assets/img/banner/1.jpg'">
+        </a>
+
+ <!-- <a  href="javascript:void(0)" (click)="goToCategory(item)">
+   <img [src]="item?.ImagePath" alt="" width="100%" onerror="this.src='./assets/img/banner/1.jpg'">
+ </a> -->
+
+      </div>
+    </div>
+  </ngx-slick-carousel>
+</div>

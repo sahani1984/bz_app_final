@@ -1,0 +1,29 @@
+<div class="section pt-0 andro_fresh-arrivals category-section">
+  <div class="container">
+    <div class="slider-wrapper slick_slider_category" *ngIf="farmerCategoryList.length">
+      <ngx-slick-carousel class="carousel" (beforeChange)="afterChange($event)" #slickCategory="slick-carousel"
+        [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let item of farmerCategoryList;let currentIndex = index;" class="category-wrapper"
+          [ngClass]="item.Categoryname">
+          <div class="category-box">
+            <a href="javascript:void(0)" (click)="goToSubcategory(item)">
+              <!-- <img ngIf="currentSlideIndex> currentIndex" -->
+              <img [src]="item.ImageUrl ? item.ImageUrl : './assets/img/cattle_feed.svg'" alt="" width="50%"
+                class="img img-responsive category-img" style="margin: 0 auto;">
+              <p class="text">{{item.Categoryname}}</p>
+            </a>
+          </div>
+        </div>
+        <!-- <div ngxSlickItem class="category-wrapper">
+          <div class="category-box">
+            <a href="javascript:void(0)" (click)="goToChatbot()">
+              <img src="./assets/img/chatbot.svg" alt="" width="50%" class="img img-responsive category-img"
+                style="margin: 0 auto;">
+              <p class="text">Chatbot</p>
+            </a>
+          </div>
+        </div> -->
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</div>

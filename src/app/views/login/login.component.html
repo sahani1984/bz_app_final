@@ -1,0 +1,73 @@
+<div class="login_wrapper">
+                <div class="modal_header">
+                    <h5 class="modal-title">{{callingFrom}}</h5>
+                    <button [mat-dialog-close]="true" cdkFocusInitial type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div *ngIf="loginWrapperBox">
+                    <form [formGroup]="loginForm">
+                        <div class="locationForm mt-3">
+                            <div class="row">                               
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input class="form-control custom-input-field" [class.is-invalid]="(loginForm.get('full_name').invalid) && (loginForm.get('full_name').touched)" placeholder="Enter full name"
+                                            formControlName="full_name" #full_name >
+                                          <div class="w-100 text-danger" *ngIf="(loginForm.get('full_name').invalid) && (loginForm.get('full_name').touched)">
+                                              <small>Please enter valid user name.</small>
+                                          </div>  
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="lble_flx"><span class="lbl">Mobile  No.</span> <span *ngIf="showHint" class="hint">Enter 10 digit mobile number without country code or zero.</span></label>
+                                        <input class="form-control custom-input-field" [class.is-invalid]="(loginForm.get('mob').invalid) && (loginForm.get('mob').touched)" maxlength="10"
+                                            placeholder="Phone Number" formControlName="mob"
+                                            (keypress)="keyPressEvent($event)" (focus)="showHint = true" (blur)="showHint = false">                                           
+                                            <div class="w-100 text-danger" *ngIf="(loginForm.get('mob').invalid) && (loginForm.get('mob').touched)">
+                                                <small>Please enter valid 10 digit number.</small>
+                                            </div> 
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="button" (click)="onLoginSubmit()"
+                                          [disabled]="loginForm.invalid"
+                                            class="btn btn-success">Submit</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div *ngIf="!loginWrapperBox">
+                    <a href="javascript:;" class="go-back grey" (click)="goBack()"><i class="fas fa-arrow-left"
+                            aria-hidden="true"></i></a>
+                    <div class="text-center">
+                        <h6 class="mb-0">Please enter the OTP to verify your account</h6>
+                        <p class="grey">A one time password has been sent to <span
+                                class="font-weight-bold">{{mobileNo}}</span></p>
+                    </div>
+
+                    <div class="form-wrapper">
+                        <form [formGroup]="verifyOtpForm" novalidate >
+                            <div class="form-group col-md-6 col-sm-6" style="margin: 0 auto 20px;">
+                                <label>Enter OTP</label>
+                                <input class="form-control custom-input-field" maxlength="10" placeholder="Enter OTP"
+                                    formControlName="otp" (keypress)="keyPressEvent($event)">
+                            </div>
+
+
+                            <div class="text-center">
+                                <button type="type" (click)="onVerifyOtp()" [disabled]="verifyOtpForm.invalid"
+                                    class="btn btn-secondary next-submit">Verify OTP</button>
+                                <div>
+                                    <a href="javascript:void(0)" (click)="resendOTP()" class="grey" [class.active]="resendOtp">Resend
+                                        One-Time Password</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+</div>

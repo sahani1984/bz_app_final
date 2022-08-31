@@ -1,0 +1,82 @@
+
+
+.category-wrapper {
+    position: relative;
+    margin: 10px;
+}
+
+
+.category-box{
+    font-size: 14px;
+    position: relative;
+    color: #222;
+    top: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    width: 124px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.category-box:hover p{
+    color: #222;
+}
+.category-box:hover img{
+    color: #222;
+}
+
+.slick-slider {
+    width: 100%;
+    margin: auto;
+    background: #fff;
+  }
+  
+  .nav-btn {
+    height: 47px;
+    position: absolute;
+    width: 26px;
+    cursor: pointer;
+    top: 100px !important;
+  }
+
+
+.products-wrapper .andro_product-footer {
+    padding: 0 10px !important;
+}
+.selected{
+    background-color:transparent;
+    color: #f36523;
+}
+.selected .sub p{
+    color: #f36523;
+}
+.breadcrumb{
+    background-color: transparent;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+}
+
+.filter {
+    position: relative;
+    background: #efefef;
+    padding: 0px;
+    border-radius: 10px;
+    min-height: 350px;
+    margin: 0 0 10px 0;
+}
+.filter h5{
+    border-bottom: 1px solid #f36523;
+    padding: 10px 0 10px 20px;
+}
+.filter h6{
+    border-bottom: 1px solid #89c74a;
+    padding: 0px 0 10px 20px;
+}
+.checkbox-wrapper{
+    padding: 0 0 10px 44px;
+}
+.form-check {
+    padding-left: 0;
+}
+.andro_product.andro_product-minimal .andro_product-title{padding-top:5px;}

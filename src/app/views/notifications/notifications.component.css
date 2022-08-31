@@ -1,0 +1,20 @@
+.notification{width:100%;}
+.notification .item_des{width:100%; height:auto; display:flex; flex-direction: column; box-shadow:0 0 5px #ccc; padding:15px; border-radius:4px;}
+.notification .item_des h4{color: #088141; width: 100%;margin: 0 0 10px; font-size: 1.125rem !important; font-weight: 500; float: left;clear: both;}
+
+
+.notification .item_des ul{width:100%; display:block; float: left; margin:0;}
+.notification .item_des ul.border-t{border-top: 1px solid #f0f0f0;clear:both; padding-top: 15px;margin-top: 15px;}
+.notification .item_des ul li{width:100%; display:flex; margin: 0 0 5px;}
+.notification .item_des ul .productName{font-weight:500; font-size:1rem;}
+.notification .item_des ul li span:first-child{display:block; width:120px; position: relative; float: left; font-weight:600;}
+.notification .item_des ul li  span:first-child:after{content:":"; position: absolute; right:10px;}
+.noorderCreated{border: 1px solid #ccc; height: 100px;width: 100%; display: flex;align-items: center;
+    justify-content: center; font-size: 1.5rem; border-radius: 4px;}
+
+    @media screen and (max-width:640px){
+        .notification .hitory_row{flex-direction:column;}
+        .notification .product_pic{max-width:80px; margin-right:0;}      
+        .notification .item_des ul li{margin-bottom:10px;}
+        .notification .hitory_row .col.item_des{padding-left:0; padding-right:0;}        
+    }

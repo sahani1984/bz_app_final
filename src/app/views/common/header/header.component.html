@@ -1,0 +1,269 @@
+
+
+<!-- Aside (Right Panel) -->
+<div class="andro_aside-overlay aside-trigger-right"></div>
+<!-- Aside (Mobile Navigation) -->
+<aside class="andro_aside" (clickElsewhere)="hideMobileWrapper($event)" [hidden]="!categoryWrapperMobile">
+  <div class="account_menu">
+    <div class="top_account_menu">
+      <a href="javascript:void(0)" class="close_btn" (click)="categoryMobile($event)"><i class="fa fa-close"></i></a>
+      <a class="logo" href="javascript:void(0)" [title]="this.agentDtls" (click)="gotoHomePage()"> <img
+          class="img-responsive" src="assets/img/BZ_logo_normal.png" alt="logo">
+      </a>
+      <ul class="accountMenuInMob">
+        <ng-container *ngIf="loginStatus">
+          <li class="andro_header-cart mr-3 userName" (click)="accountSubMenu = !accountSubMenu"
+            [class.active]="accountSubMenu" *ngIf="loginStatus">
+            <span>Welecome, </span>
+            <a href="javascript:void(0)">{{farmerName | titlecase}}</a></li>
+
+          <ng-container *ngFor="let menuItem of leftMenuList">
+            <li *ngIf="(menuItem.urlType==1) && (menuItem.forLoginUser == 1) && (menuItem.url != null)">
+              <a [routerLink]="menuItem.url">
+                <i class="{{menuItem.menuIcon}} mr-1" aria-hidden="true"></i>
+                {{menuItem.MenuName}}
+              </a>
+            </li>
+          </ng-container>       
+          <li class="signout links">
+            <a href="javascript:void(0)" (click)="signOut()">
+              <i class="fa fa-sign-out mr-1" aria-hidden="true"></i> <span>Sign out</span>
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngFor="let menuItem of leftMenuList">
+          <li *ngIf="(menuItem.urlType==1) && (menuItem.forLoginUser == 2) && (menuItem.url != null)">
+            <a [routerLink]="menuItem.url">
+              <i class="{{menuItem.menuIcon}} mr-1" aria-hidden="true"></i>
+              {{menuItem.MenuName}}
+            </a>
+          </li>
+        </ng-container>
+        <li *ngIf="!loginStatus" class="login_links">
+          <a href="javascript:void(0)" (click)="loginWrapper('Login',0,0,'', 0,0)">
+            <i class="fa fa-sign-in mr-2" aria-hidden="true"></i>
+            Login
+          </a>
+        </li>
+        <li class="notifications">
+          <a (click)="showNotificaton = !showNotificaton" href="javascript:void(0)">           
+            <i class="fa fa-bell mr-1" aria-hidden="true"></i> Notification
+             <span class="not_count">{{notificationCount}}</span>
+          </a>
+          <ul [hidden]="!showNotificaton">
+            <li *ngFor="let n of notificationArr">
+              <a [href]="n.UrlRedirection"> {{n.Notification}} 1</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <ul *ngIf="farmerCategoryList?.length" class="category_menu">
+      <li class="menu-item menu-item-has-children" *ngFor="let item of farmerCategoryList">
+        <a href="javascript:void(0)" (click)="goToSubcategory(item)">{{item?.Categoryname}}</a>
+      </li>
+    </ul>
+  </div>
+</aside>
+
+
+<div class="andro_aside-overlay aside-trigger-left"></div>
+<!-- Header Start -->
+<header class="andro_header header-3 can-sticky" > 
+  <div class="andro_header-top">
+    <div class="container-fluid">
+      <div class="andro_header-top-inner">
+        <ul class="andro_header-top-sm andro_sm">         
+          <li  style="display:flex;text-align: -webkit-match-parent;" >
+            <a href="javascript:void(0)" (click)="navigate('https://api.whatsapp.com/send?phone=917876400500&text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0')"
+              target="_blank" > <img src="assets/img/whatsapp.svg" style="max-width:50px;" alt="whatsapp" /> <strong>7876400500</strong></a>
+          </li>
+        </ul>
+        <ul class="andro_header-top-links">
+          <li class="menu-item menu-item-has-children">
+            <a href="javascript:void(0)" (click)="locationModal()"> <span class="">
+              {{districtName | titlecase}}&nbsp;{{stateName | titlecase}}
+              <i class="fa fa-map-marker font-20" style="margin-left:15px" aria-hidden="true"></i>
+              </span>
+            </a>
+          </li>          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Middle Header Start -->
+  <div class="andro_header-middle">
+    <div class="container-fluid">
+      <nav class="navbar">      
+        <div class="float-left">
+          <a class="navbar-brand" (click)="moveToHome()" routerLink='/'> 
+            <img  class="float-left bzlogo mr-2" src="assets/img/BZ_logo_normal.png" alt="logo">
+            <img *ngIf="clientLogo" class="float-left clientLogo mr-2" [src]="clientLogo" alt="logo">
+          </a>
+        </div>
+      <div class="andro_search-adv" [ngStyle]="{'display':(this.topSearch ? 'block':'none')}">
+          <form method="post">
+              <div class="andro_search-adv-cats">
+                <div class="andro_dropdown-scroll">
+                  <select [(ngModel)]="selectedCategoryId" id="company" role="menu" name="Category" class="btn btn-default" style="background-color: #F0F2F3">
+                      <option [ngValue]=0><span>All Categories</span></option>
+                      <option [ngValue]="item.CategoryId" *ngFor="let item of farmerCategoryList"><span>{{item?.Categoryname}}</span></option>                    
+                  </select>
+                </div>
+              </div>
+              <div class="andro_search-adv-input " *ngIf="topSearch">
+                      <input type="search"
+                      placeholder="{{searchPlaceholder}}" class="form-control searchInput"
+                             matInput #searched
+                             [formControl]="myControl"
+                             [matAutocomplete]="auto">
+                             <span hidden
+                               class="clear fa fa-close "></span>
+                      <mat-autocomplete #auto="matAutocomplete" [displayWith]="getTitle.bind(this)"  >
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
+                          <span [innerHTML]="option.name | highlight: toHighlight"></span>
+                      <span></span>
+                        </mat-option>
+                      </mat-autocomplete>
+                   <button type="submit" name="button" ><i class="fa fa-search"></i></button>     
+                   </div>
+          </form>
+      </div>
+
+        <div class="andro_header-controls">
+          <ul class="andro_header-controls-inner">
+            <li class="notifications">
+              <a (click)="showNotificaton = !showNotificaton" href="javascript:void(0)">
+                <span  class="not_count">{{notificationCount}}</span>
+                <i class="fa fa-bell mr-1" aria-hidden="true"></i>
+              </a>
+             <ul [hidden]="!showNotificaton">
+               <li *ngFor="let n of notificationArr">
+                 <a [href]="n.UrlRedirection"> {{n.Notification}} 1</a>
+                </li>               
+             </ul>
+            </li>
+            <li class="andro_header-cart mr-3 userName submenu" (click)="accountSubMenu = !accountSubMenu"
+              [class.active]="accountSubMenu" *ngIf="loginStatus">
+              <a href="javascript:void(0)">{{farmerName | titlecase}}</a>
+              <ul>
+                <li><a href="javascript:void(0)" (click)="navigateToProfile()"><i class="fa fa-user mr-1"
+                      aria-hidden="true"></i> Profile Info</a></li>
+                <li><a routerLink="/bz/order-history"><i class="fa fa-history mr-1" aria-hidden="true"></i> Order
+                    History</a></li>              
+                <li><a href="javascript:void(0)" (click)="signOut()"><i class="fa fa-sign-out mr-1"
+                      aria-hidden="true"></i> Sign out</a></li>
+              </ul>
+            </li>
+            <li class="login links">
+              <a href="javascript:void(0)" (click)="loginWrapper('Login',0,0,'', 0,0)" *ngIf="!loginStatus">               
+                <i class="fa fa-sign-in mr-2" aria-hidden="true"></i>
+                <span>Login</span>
+              </a>
+            </li>
+            <li class="signout links">
+              <a href="javascript:void(0)" (click)="signOut()" *ngIf="loginStatus">
+                <i class="fa fa-sign-out mr-1" aria-hidden="true"></i> <span>Sign out</span>
+              </a>
+            </li>           
+          </ul>
+          
+          <!-- Toggler -->
+          <div [hidden]="categoryWrapperMobile" class="aside-toggler" [class.active]="categoryWrapperMobile"
+            (click)="categoryMobile($event)">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+
+  <!-- Bottom Header Start -->
+  <div class="andro_header-bottom">
+    <div class="container-fluid">
+      <div class="andro_header-bottom-inner">
+        <div class="andro_category-mm open">
+          <div class="andro_category-mm-header" (clickElsewhere)="categoryWrapper=false" (click)="category()">
+            <h6> <i class="fas fa-th-large"></i> Categories</h6>
+          </div>
+          <div class="andro_category-mm-body" *ngIf="categoryWrapper">
+            <ul *ngIf="farmerCategoryList?.length">
+              <li class="andro_category-mm-item" *ngFor="let item of farmerCategoryList"> <a href="javascript:;"
+                  (click)="goToSubcategory(item)">
+                  {{item?.Categoryname}}</a> </li>
+                   <li> <a (click)="goToTractor()" href="javascript:void(0)">ट्रैक्टर</a> </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!topSearch">
+    <div style="width: 80%; margin: 2px auto;">
+    <div class="input-group">     
+      <input type="search"
+      placeholder="{{searchPlaceholder}}" class="form-control searchInput"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="getTitle.bind(this)"  >
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
+          <span [innerHTML]="option.name | highlight: toHighlight"></span>
+      <span></span>
+        </mat-option>
+      </mat-autocomplete>
+      <div class="input-group-append">
+        <button class="btn btn-secondary" type="button">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  </div> 
+</header>
+
+
+<!-- location set modal -->
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h5 class="modal-title">Select your location</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" *ngIf="closeIcon">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="locationForm">
+          <div class="locationForm mt-3">
+            <div class="form-group">
+              <label>State <span class="text-danger">*</span></label>
+              <select class="form-control" formControlName="state" (change)="addState($event.target.value)" required>
+                <option *ngFor="let item of stateList" [value]="item.Id + ' ' + item.Name">{{item.Name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>District&nbsp;<span class="text-danger">*</span></label>
+              <select class="form-control" formControlName="district" (change)="addDistrict($event.target.value)"
+                required>
+                <option *ngFor="let item of districtList" [value]="item.Id + ' ' + item.Name">
+                  {{item.Name}}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="button" (click)="onSubmit()" [disabled]="locationForm.invalid"
+                class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

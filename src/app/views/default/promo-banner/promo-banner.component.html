@@ -1,0 +1,12 @@
+<!-- category banners -->
+<div class="section pt-0">
+  <div class="container-fluid">
+    <div class="section-title flex-title">
+      <h4 class="title"> अभी जो उत्पाद सबसे ज़्यादा बिक रहा है
+      </h4>
+    </div>
+  </div>
+  <a [href]="item.Url_Redirection" *ngFor="let item of promoBanners">
+    <img class="img img-responsive mb-1" [src]="item?.Imageurl" [alt]="item?.Category">
+  </a> 
+</div>

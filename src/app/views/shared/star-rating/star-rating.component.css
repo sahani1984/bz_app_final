@@ -1,0 +1,8 @@
+.star_rating_btn{
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    border:0; text-align:center;
+    background:transparent;  
+    color:#ff4081; margin:0 8px 0 0; padding:0;
+}

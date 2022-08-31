@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+/* "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css" */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+
+html, body { height: 100%; }
+body { margin: 0;}
+body { font-family: Roboto, "Helvetica Neue", sans-serif !important; }
+.cdk-global-scrollblock {
+    position: static;
+    overflow: hidden !important;
+}
+
+
+/**HOME PAGE PRODUCT SLIDER NEXT/PREVIOUS BUTTON */
+.slide_next{
+    position: absolute; top: -69px;
+      left: auto;
+      right: 35px;
+      font-size: 12px;
+      background: #f36523;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      color: #fff;
+      border-radius: 50%;
+  }  
+  .slide_prev{
+    position: absolute; top: -69px;
+      left: auto;
+      right: 0px;
+      font-size: 12px;
+      background: #f36523;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      color: #fff;
+      border-radius: 50%;
+  }
+
+  .loading{width:100%; display:flex; align-items:center; justify-content:center; height:auto;}
+  .loading img{max-width:100%;}
+  .andro_header-cart.userName a{border:0}
+  .andro_header-cart.userName a:hover{background:none;}
+  
+  ngx-slick-carousel.main_banner{position:relative;}
+  ngx-slick-carousel.main_banner .nextBtn, ngx-slick-carousel.main_banner .prevBtn{
+      display: block; width: 30px; height: 30px; line-height: 30px; text-align: center; background: rgba(0,0,0,.3);
+      top: 40%; position: absolute; z-index: 1; color: #fff; font-size: 1.75rem;
+      border-radius: 2px; cursor: pointer; transition:1s ease;
+  }
+  ngx-slick-carousel.main_banner .nextBtn{right:0; }
+  ngx-slick-carousel.main_banner .prevBtn{left:0}
+  ngx-slick-carousel.main_banner .fa:hover{background:rgba(0,0,0,.6);}  
+  .mat-flat-button.mat-success{background-color:#088141; color:#fff;}
+ 
+  .success .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{border-color: #088141;}
+  .success .mat-radio-button.mat-accent .mat-radio-inner-circle{background-color: #088141;}
+
+  .slick_slider_category .slick-prev,  .slick_slider_category  .slick-next{background:rgba(0,0,0,.3); color:#fff;
+     display:flex; width:26px; height:26px; z-index:99; border-radius:2px; font-weight:bold;}
+ .slick_slider_category .slick-prev:before,  .slick_slider_category .slick-next:before{ font:normal normal normal 22px/1 FontAwesome;
+      color:#fff;}
+  .slick_slider_category .slick-prev:before{content:"\f104";}
+  .slick_slider_category .slick-next:before{content:"\f105";}
+  .slick_slider_category .slick-prev{left:-50px;}
+  .slick_slider_category .slick-next{right:-50px;}
+
+
+.customScrollbar::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);border-radius: 10px; background-color: #F5F5F5;}
+ .customScrollbar::-webkit-scrollbar { width: 5px;height: 5px;background-color: #F5F5F5;}
+ .customScrollbar::-webkit-scrollbar-thumb {background-color: #999; width: 4px;border-radius:4px;}
+
+  
+
+ /** Image maginfire**/
+ .img-zoom-result{min-width:500px; min-height:500px; max-height:501px; background-repeat: no-repeat; z-index: 2; position:absolute;-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.22), 0 1px 2px rgba(0,0,0,0.44);box-shadow: 0 1px 3px rgba(0,0,0,0.22), 0 1px 2px rgba(0,0,0,0.44); top: 0;left: 100%; background-color:white}
+
+
+
+
+
+
+
+  @media screen and (max-width:640px){
+    .slick_slider_category .slick-prev{left:-35px;}
+    .slick_slider_category .slick-next{right:-35px;}
+  }
+
+  @media screen and (max-width:640px){
+    .andro_header-top .whatsapp img{transform:translateX(-15px);}
+    .andro_header-top .whatsapp strong{display:none;}
+    .andro_header-controls-inner .signout{display:none;}
+    .navbar-brand{width:135px; margin-right:0;}
+    .andro_header-controls{width: auto; justify-content:space-between;}
+    .andro_header-controls .aside-toggler{height:35px; width:40px;}
+    .andro_header-controls-inner li.submenu ul{right:-10px; top:150%;}
+    .andro_header-controls-inner li.submenu.active ul{top:130%;}
+    .slick_slider_category{padding:0 30px;}
+    .slick_slider_category .slick-slide{margin:0 5px;}
+    
+}

@@ -1,0 +1,9 @@
+.andro_footer{
+    width: 100%;
+    float: left;
+    clear: both;
+}
+
+
+.whatsappChat{width:70px; height:60px; display:flex; position:fixed; bottom:10px; right:0px; background-color:transparent;}
+.whatsappChat img{max-width:100%;}

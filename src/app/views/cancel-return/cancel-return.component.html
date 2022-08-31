@@ -1,0 +1,27 @@
+<div class="section py-5 andro_fresh-arrivals category-section">
+    <div class="container">
+      <div class="profile-wrapper">
+        <div class="section-title-wrap mr-lg-30">
+          <h4 class="title">Cancel/Return Order</h4>
+
+          
+          <div  class="cancel_return_order">    
+            <label id="example-radio-group-label">Select your Reason</label>      
+             
+
+             <ul>
+               <li *ngFor="let reason of [1,2,3,4,5]" >{{reason}}</li>
+             </ul>
+
+         
+
+            <div class="w-100 d-flex justify-content-start">
+              <button (click)="submitReason()" mat-outline-button color="primary">Submit</button>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>

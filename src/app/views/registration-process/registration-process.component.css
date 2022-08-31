@@ -1,0 +1,38 @@
+.login_wrapper{
+    width:450px; max-width:100%;
+}
+.modal_header{
+    display:flex;
+    width:100%; 
+    justify-content:space-between;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+    padding:10px 0;
+}
+.form-control option {
+    padding: 7px;
+}
+.modal_header h5{margin:0;}
+.modal_header .close{outline:none;}
+.lble_flx{display:flex; width:100%;}
+.lble_flx .lbl{width:100px;}
+.hint{font-size: 10px;
+    text-align: right;
+    color: #777;
+    width: 100%;
+    display: block;
+    float: right;}
+    .custom-select.is-invalid, .form-control.is-invalid, .was-validated .custom-select:invalid, .was-validated .form-control:invalid {
+        border-color: #dc3545;
+    }
+    .required{
+      color:red;
+}
+    .invalid-feedback {
+        display: none;
+        width: 100%;
+        margin-top: .25rem;
+        font-size: 80%;
+        color: #dc3545;
+    }
+   

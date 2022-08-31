@@ -1,0 +1,41 @@
+.subtitle{
+    font-size: 14px;
+    line-height: 26px;
+    text-align: center;
+}
+ul li{
+    list-style-type: disc;
+}
+.team-box {
+    border: 1px solid #efefef;
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #ccc;
+}
+.team-box img{
+    margin: 0 auto;
+    display: block;
+}
+.team-box p{
+    font-size: 12px !important;
+}
+
+.andro_testimonial-body {
+    min-height: 175px;
+}
+.custom-p{margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;}
+.custom-span{margin-top:0cm;margin-right:0cm;margin-bottom:7.5pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;}
+.custom-span2{margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;}
+.custom-1{font-size:16px;font-family:"Times New Roman",serif;}
+.custom-2{margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;border:none;border-left:solid #D84F57 1.5pt;padding:0cm 0cm 0cm 8.0pt;background:#F2F2F2;}
+.custom-3{margin-top:15.0pt;margin-right:0cm;margin-bottom:11.25pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;background:#F2F2F2;border:none;padding:0cm;}
+.custom-4{font-family:"Times New Roman",serif;font-size:12.0pt;}
+.custom-5{font-size:17px;font-family:"inherit",serif;color:#766d6d;}
+.custom-6{list-style-type: disc;margin-left:14.75px;}
+.custom-7{margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:center;background:#D84F57;}
+.custom-8{font-size:16px;font-family:"Times New Roman",serif;color:white;}
+.custom-9{margin-top:0cm;margin-right:0cm;margin-bottom:8.0pt;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:center;background:#D84F57;}
+.custom-10{font-size:23px;font-family:"inherit",serif;}
+.custom-11{font-size:15px;font-family:"inherit",serif;}

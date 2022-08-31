@@ -1,0 +1,178 @@
+<!-- Subheader Start -->
+<div class="container-fluid mt-2">
+  <div class="section-title flex-title pb-0">
+    <h4 class="title float-left">{{ItemCategoryTitle?ItemCategoryTitle:'Product Details'}}</h4>
+    <nav aria-label="breadcrumb" class="float-right">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']">Home</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0)" (click)="goToBack()">Sub Categories</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Product Details</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<ng-container *ngIf="!productDetails.length">
+  <div class="container-fluid">
+    <div class="loading">
+      <img src="./assets/img/loading.gif" alt="loading">
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="productDetails.length">
+  <!-- Subheader End -->
+  <!-- Product Content Start -->
+  <div class="productWrapper">
+    <div class="container">
+      <div *ngIf="productAvailability">
+        <div class="row" *ngFor="let item of productDetails">
+          <div class="col-md-5">
+            <div class="imageViewer">
+              <div class="thumbnails customScrollbar">
+                <span *ngIf="(item?.VideoUrl) && matchYoutubeUrl(item?.VideoUrl)" [class.active]="!imageViewThumb">
+                  <img (click)="imageViewThumb = false; selectedIndex = null" src="./assets/img/video.jpg"
+                    alt="video" />
+                </span>
+                <span *ngFor="let img of productsImages; let i=index" [class.active]="selectedIndex == i">
+                 <img [src]="img?.ImagePath" (click)="changeImage(img?.ImagePath, i)" alt="product" class="thumb">
+                </span>                
+               </div>
+              <div class="bigImagewrapper">
+              <div *ngIf="imageViewThumb && bigImage" class="imagepreview">
+                <ng-img-magnifier [thumbImage]="bigImage" [fullImage]="bigImage" [top]="-2" [right]="-100"
+                  [lensWidth]="100" [lensHeight]="100">
+                </ng-img-magnifier>
+            </div>
+                <div *ngIf="!imageViewThumb && item?.VideoUrl && (item?.VideoUrl != 'NULL')" class="videopreview">                
+                     <iframe  
+                    [src]="(item?.VideoUrl+'?autoplay=1&mute=1&playsinline=1') | safeVideo"
+                      frameborder="0" allowfullscreen></iframe>
+
+                    <span class="close" (click)="hideVideo()" title="Close"><i
+                        class="fa fa-close"></i></span>
+                </div>
+              </div>
+            </div>
+            <!-- <div *ngIf="(productsImages.length == 1) &&  !productDetails[0].VideoUrl"
+              class="andro_product-single-thumb">
+                <ng-img-magnifier [thumbImage]="item?.ImageUrl" [fullImage]="item?.ImageUrl" [top]="-2" [right]="-100" [lensWidth]="100" [lensHeight]="100">
+                </ng-img-magnifier>
+            
+            </div> -->
+          </div>
+          <div class="col-md-7">
+            <div class="andro_product-single-content">
+              <h3> {{item?.ProductName}} </h3>
+              <div class="andro_product-price mb-0">
+                <table class="table product_details" border="1">
+                  <tr>
+                    <td colspan="2">
+                      <ng-template [ngIf]="item?.OnlinePrice > 0" [ngIfElse]="noPriceValue">
+                        <span>{{item?.OnlinePrice | currency:'INR'}}</span>
+                        <span style="text-decoration:line-through;">{{item?.MRP | currency:'INR'}}</span>
+                      </ng-template>
+                      <ng-template #noPriceValue>
+                        <span>{{item?.OnlinePrice==0?'Please contact':item?.OnlinePrice}}</span>
+                      </ng-template>
+                      <span>(OfferDiscount: <strong>{{item?.OfferDiscount}}</strong>)</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Quantity</th>
+                    <td>{{item?.Quantity}}</td>
+                  </tr>
+                  <tr *ngFor="let data of desc">
+                    <th>{{data.key}}</th>
+                    <td>{{data.value}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <ng-container *ngIf="!dealersAvailability && globalBuyWrapper">
+                        <button type="button" (click)="goToEnquiry(item?.RecordID,1, item?.CategoryID, item?.DealerId)"
+                          class="btn btn-info">ENQUIRY</button> &nbsp;
+                      </ng-container>
+                      <ng-container *ngIf="!globalBuyWrapper">
+                        <button type="button" class="btn btn-primary" (click)="globalBuyBtn()">Buy Now</button>
+                      </ng-container>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- <ng-template [ngIf]="item?.OnlinePrice > 0"  [ngIfElse]="noPriceValue">
+                                <span>{{item?.OnlinePrice | currency:'INR'}}</span>
+                                <span>{{item?.MRP | currency:'INR'}}</span>
+                            </ng-template> 
+                            <ng-template #noPriceValue>
+                                <span>{{item?.OnlinePrice==0?'Please contact':item?.OnlinePrice}}</span>                               
+                            </ng-template>                            
+                        <span>(OfferDiscount: <strong>{{item?.OfferDiscount}}</strong>)</span>
+                            <p class="mb-0"><strong>Quantity:</strong> &nbsp;{{item?.Quantity}}</p> -->
+              </div>
+
+              <!-- <p class="andro_product-excerpt mb-1" *ngFor="let data of desc">
+                            <span class="des"><strong> {{data.key}}:</strong> &nbsp;&nbsp;{{data.value}}</span>
+                        </p> -->
+              <!-- <div class="text-left" *ngIf="!dealersAvailability && globalBuyWrapper">  <br/>                          
+                            <button type="button" (click)="goToEnquiry(item?.RecordID,1, item?.CategoryID, item?.DealerId)" 
+                            class="btn btn-info btn-lg">ENQUIRY</button>
+                        </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center" *ngIf="!productAvailability">
+        No product found
+      </div>
+    </div>
+  </div>
+  <!-- Product Content End -->
+
+  <!-- Related Products Start -->
+  <div class="section pt-0 andro_related-posts">
+    <div class="container-fluid" *ngIf="globalBuyWrapper">
+      <div class="section-title flex-title">
+        <h4 class="title">Dealers Availability</h4>
+      </div>
+      <div class="" *ngIf="dealersAvailability">
+        <div class="row">
+          <div class="col-md-3 col-sm-6" *ngFor="let item of dealerDetails">
+            <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons">
+
+              <div class="andro_product-body" *ngIf="item?.IsDeliveryAvailable == 0">
+                <h6 class="andro_product-title"> {{item?.dealerName}} </h6>
+                <div class="andro_product-price text-left">
+                  <p class="mb-0"> <strong>{{item?.OnlinePrice | currency:'INR'}} </strong></p>
+                  <p class="mb-0"><strong>Quantity:</strong> {{item?.Quantity}}</p>
+                  <p class="mb-0"><strong>Distance:</strong> {{item?.DistanceFromBuyer}} KM.</p>
+                  <!-- <p class="mb-0"><strong>Address:</strong> {{item?.address}}</p> -->
+                  <button type="button" class="btn btn-success mt-2" (click)="openModal(item)">Get Best Deal</button>
+                </div>
+              </div>
+
+              <div class="andro_product-body" *ngIf="item?.IsDeliveryAvailable == 2">
+                <h6 class="andro_product-title"> {{item?.dealerName}} </h6>
+                <div class="andro_product-price text-left">
+                  <!-- changed by prashant -->
+                  <!-- <p class="mb-0"><strong>Address:</strong> {{item?.address}}</p> -->
+                  <button type="button" class="btn btn-success mt-2" (click)="globalBuyBtn()">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="!dealersAvailability">
+        {{dealersMessage}}
+      </div>
+    </div>
+    <!-- <div class="container-fluid" *ngIf="!globalBuyWrapper">
+        <div class="text-center">
+            <button type="button" class="btn btn-primary btn-lg" (click)="globalBuyBtn()">Buy Now</button>
+        </div>
+    </div> -->
+  </div>
+  <!-- Related Products End -->
+
+</ng-container>

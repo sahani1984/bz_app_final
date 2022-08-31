@@ -1,0 +1,48 @@
+<div class="container-fluid mt-4">
+  <div class="section-title flex-title">
+    <h4 class="title">{{seeMoreText}}</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ng-container *ngIf="!productsList.length">
+        <div class="container-fluid">
+          <div class="loading">
+            <img src="./assets/img/loading.gif" alt="loading">
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="productsList.length">
+        <div class="row">
+          <div class="col-md-3 col-sm-6" *ngFor="let item of productsList">
+            <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons">
+              <div class="andro_product-thumb">
+                <a href="javascript:;" (click)="goToDetailPage(item?.RecordID)"><img src="{{item?.ImagePath}}"
+                    alt="product"></a>
+              </div>
+              <div class="andro_product-badge andro_badge-sale">
+                {{item?.OfferDiscount}}
+              </div>
+              <div class="andro_product-body">
+                <h6 class="andro_product-title"> <a href="javascript:;" (click)="goToDetailPage(item?.RecordID)">
+                    {{item?.BrandName}} </a>
+                </h6>
+              </div>
+              <div class="andro_product-footer">
+                <div class="andro_product-price">
+                  <p>
+                    <span class="float-left">
+                      <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                      <span class="main-price">&#8377; {{item?.MRP}}</span>
+                    </span>
+                    <span class="float-right pcs">{{item?.UnitName}}</span>
+                  </p>
+                </div>
+                <div class="andro_product-buttons">&nbsp;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

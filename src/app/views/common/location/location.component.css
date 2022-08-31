@@ -1,0 +1,5 @@
+.location_wrapper {
+  width: 450px;
+  max-width: 100%;
+}
+.title_row{display:flex; justify-content:space-between;}

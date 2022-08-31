@@ -1,0 +1,177 @@
+<!-- Footer Start -->
+<footer class="andro_footer" id="footerEl">
+  <!-- Top Footer -->
+  <div class="container">
+    <div class="andro_footer-top">
+      <div class="andro_footer-logo">
+      </div>
+      <div class="andro_footer-buttons">
+        <a href="http://bit.ly/2mhoYjK" target="_blank"><img [lazyLoad]="playstore" alt="play-store" width="100%"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Middle Footer -->
+  <div class="andro_footer-middle">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 footer-widget">
+          <h5>Information</h5>
+          <ul>
+            <li> <a routerLink='/'>Home</a> </li>
+            <li> <a routerLink='/bz/about'>About us</a> </li>
+            <li> <a>Return &amp; Exchange Policy</a> </li>
+            <!-- <li> <a routerLink='/bz/lead/1'>Lead</a> </li> -->
+            <li> <a
+                (click)="navigate($event, 'https://behtarzindagi.in/index/Become-A-Seller.Html', '_self')"
+                href="javascript:void(0)">Become a Seller</a> </li>
+            <li> <a routerLink="/bz/advisory">Advisory</a> </li>
+          </ul>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 footer-widget">
+          <h5>Top Categories</h5>
+          <ul>
+            <li *ngFor="let item of farmerCategoryList">
+              <a *ngIf="(item.Categoryname != 'Tractor') || (item.Categoryname != 'ट्रैक्टर')" href="javascript:void(0)"
+                (click)="goToSubcategory(item)">{{item.Categoryname}}</a> </li>
+            <li> <a (click)="goToTractor()" href="javascript:void(0)">ट्रैक्टर</a> </li>
+          </ul>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 footer-widget">&nbsp;</div>
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 footer-widget">
+          <h5 class="widget-title">Social Media</h5>
+          <ul class="social-media">
+            <li> <a href="javascript:void(0)"
+                (click)="navigate($event, 'https://www.facebook.com/behtarzindagi.in', '_blank')" title="facebook"
+                class="facebook"> <i
+                  class="fab fa-facebook-f"></i> </a>
+            </li>
+            <li> <a href="javascript:void(0)"
+                (click)="navigate($event, 'https://www.instagram.com/behtar.zindagi', '_blank')" title="instagram"
+                class="instagram"> <i
+                  class="fab fa-instagram"></i>
+              </a> </li>
+              <li> <a href="javascript:void(0)"
+                  (click)="navigate($event, 'https://www.linkedin.com/company/behtar-zindagi/', '_blank')"
+                  title="linkedIn" class="linkedin">
+                   <i class="fab fa-linkedin"></i>
+                 </a> </li>
+            <li> <a href="javascript:void(0)"
+                (click)="navigate($event, 'https://play.google.com/store/apps/details?id=com.behtarzindagi.consumer', '_blank')"
+                title="google" class="google"> <i
+                  class="fab fa-google"></i> </a> </li>
+            <li> <a href="javascript:void(0)" (click)="navigate($event, 'https://twitter.com/behtarzindagi', '_blank')"
+                title="twitter" class="twitter">
+                <i
+                  class="fab fa-twitter"></i> </a> </li>
+          </ul>
+          <div class="andro_footer-offer">
+            <a href="mailto:support@behtarzindagi.in" class="">support@behtarzindagi.in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Bottom Footer  -->
+  <div class="andro_footer-bottom">
+    <div class="container">
+      <ul>
+        <li> <a routerLink="/bz/privacy-policy">Privacy Policy</a> </li>
+        <li> <a routerLink="/bz/refund-policy">Refund Policy</a> </li>
+        <li> <a routerLink="/bz/delivery-policy">Delivery Policy</a> </li>
+        <li> <a routerLink="/bz/terms-and-conditions">Terms & Conditions</a> </li>
+        <li> <a routerLink="/bz/contact-us">Contact Us</a> </li>
+      </ul>
+      <div class="andro_footer-copyright" id="backToTop">
+        <p> Copyright © 2020 <a href="#">Behtar Zindagi</a> All Rights Reserved. </p>
+        <a href="javascript:void(0)" (click)="scrollToTop()" class="andro_back-to-top">Back to top <i
+            class="fas fa-chevron-up"></i> </a>
+
+
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Footer End -->
+
+
+<!-- Quick View Modal Start -->
+<div class="modal fade andro_quick-view-modal" id="quickViewModal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="close-btn close-dark close" data-dismiss="modal">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-5">
+              <img [lazyLoad]="path1" alt="product">
+            </div>
+            <div class="col-md-7">
+              <div class="andro_product-single-content">
+                <div class="andro_rating-wrapper">
+                  <div class="andro_rating">
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star active"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                  <span>4 Stars</span>
+                </div>
+                <h3> Tomatoes </h3>
+                <div class="andro_product-price">
+                  <span>8$</span>
+                  <span>14$</span>
+                </div>
+                <p class="andro_product-excerpt">Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit
+                  amet nisl tempus convallis quis ac lectus.</p>
+                <form class="andro_product-atc-form">
+                  <div class="andro_product-variation-wrapper">
+                    <div class="form-group">
+                      <select class="form-control" name="amount">
+                        <option value="">Select Amount</option>
+                        <option value="1">1 Kilo</option>
+                        <option value="2">2 Kilos</option>
+                        <option value="3">3 Kilos</option>
+                        <option value="4">4 Kilos</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select class="form-control" name="breed">
+                        <option value="">Select a Breed</option>
+                        <option value="italian">Italian</option>
+                        <option value="egyptian">Egyptian</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="qty-outter">
+                    <a routerLink='/product-single' class="andro_btn-custom">Buy Now</a>
+                    <div class="qty">
+                      <span class="qty-subtract"><i class="fa fa-minus"></i></span>
+                      <input type="text" name="qty" value="1">
+                      <span class="qty-add"><i class="fa fa-plus"></i></span>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Quick View Modal End -->
+
+
+<!-- CHAT ON WHATSAPP -->
+<div class="whatsappChat">
+  <a (click)="navigate($event, 'https://api.whatsapp.com/send?phone=917876400500&text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%95%E0%A4%BE%E0%A4%B0', '_blank')" 
+    title="Chat on Whatsapp">
+    <img src="./assets/img/whatsapp.svg" alt="WhatsApp" />
+  </a>
+</div>

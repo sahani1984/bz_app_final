@@ -1,0 +1,102 @@
+<div class="section pt-0 andro_fresh-arrivals category-section">
+  <div class="container-fluid mt-2" *ngIf="subCategoryWrapper">
+    <div class="section-title flex-title pb-0">
+      <h4 class="title float-left">{{state !== 'HARYANA'?productCategoryTitle:'Sub Categories'}} </h4>
+      <nav aria-label="breadcrumb" class="float-right">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:;" [routerLink]="['/']">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Product Sub Categories</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div class="container-fluid mt-6" style="padding: 0 20px;">
+    <div class="slider-wrapper" *ngIf="subCategoryWrapper">
+
+      <ngx-slick-carousel class="carousel" #slickModal2="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let item of subCategoryList; let i = index;" class="text-center"
+          [class.selected]="selectedIndex === i" (click)="setIndex(i)">
+          <a href="javascript:;" (click)="goToSubcategory(item)">
+            <div class="sub">
+              <img [src]="item?.ImageUrl ? item?.ImageUrl : './assets/img/no-image.png'" alt="" width="80%"
+                style="margin: 0 auto;">
+              <p class="text">{{item.CategoryName}}</p>
+            </div>
+          </a>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+
+    <div class="products-wrapper mt-4">
+      <div class="section-title flex-title">
+        <h4 class="title">{{state == 'HARYANA'?productCategoryTitle:subCategoryTitle}} </h4>
+      </div>
+
+      <ng-container *ngIf="!productsList.length">
+        <div class="container-fluid">
+          <div class="loading">
+            <img src="./assets/img/loading.gif" alt="loading">
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="productsList.length">
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="productWrapper">
+              <div class="row">
+                <div class="col-md-3 col-sm-6" *ngFor="let item of productsList">
+                  <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons">
+                    <div class="andro_product-thumb">
+                      <a href="javascript:void(0);" (click)="goToProdcutDetail(item)">
+                        <img [lazyLoad]="item?.ImagePath" alt="product"></a>
+                    </div>
+                    <div class="andro_product-badge andro_badge-sale">{{item?.OfferDiscount}}</div>
+                    <div class="andro_product-body">
+                      <h6 class="andro_product-title"> 
+                        <a href="javascript:;" (click)="goToProdcutDetail(item)">{{item?.ProductName}} </a>
+                      </h6>
+                    </div>
+                    <div class="andro_product-footer">
+                      <div class="andro_product-price">
+                        <p>
+                          <span class="float-left">
+                            <ng-template [ngIf]="item?.OnlinePrice > 0" [ngIfElse]="noPriceValue">
+                              <span class="offer-price">{{item?.OnlinePrice | currency:'INR'}}</span>&nbsp;
+                              <span class="main-price">{{item?.MRP | currency:'INR'}}</span>
+                            </ng-template>
+                            <ng-template #noPriceValue>
+                              <span class="offer-price">{{item?.OnlinePrice}}</span>&nbsp;
+                              <span class="main-price">{{item?.MRP}}</span>
+                            </ng-template>
+                          </span>
+                          <span class="float-right pcs">{{item?.UnitName}}</span>
+                        </p>
+                      </div>
+                      <div class="andro_product-buttons"> &nbsp; </div>
+                    </div>
+                    <div class="andro_product-footer">
+                      <div class="andro_product-price">
+                        <span class="float-left">
+                          <button type="button" (click)="goToProdcutDetail(item)" class="btn btn-success btn-sm">BUY
+                            NOW</button>
+                        </span>
+                        <span class="float-right"><button type="button"
+                            (click)="goToEnquiry(item?.RecordID,1, item?.CategoryID, item?.DealerId)"
+                            class="btn btn-info btn-sm">ENQUIRY</button></span>
+                      </div>
+                      <div class="andro_product-buttons"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center" *ngIf="!productWrapper">
+              Products not found
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
